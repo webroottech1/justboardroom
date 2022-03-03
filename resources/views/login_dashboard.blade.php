@@ -27,7 +27,7 @@ nav.navbar {
 				<li itemscope="itemscope" class="page-item-159 current_page_item active nav-item">
 					<a title="List A Space" href="#" class="nav-link" onclick="#">List A Space</a></li>
 					<li itemscope="itemscope" class="page-item-159 nav-item">
-					<a title="List A Space" href="#" class="nav-link" onclick="#">Login</a></li>                        
+					<a title="List A Space" href="#" class="nav-link" onclick="event.preventDefault();addLoginForm();">Login</a></li>                        
 				<!-- <li itemscope="itemscope" class="nav-item">
 					<a title="FAQ" href="https://justboardrooms.com/faq/" class="nav-link">FAQ</a></li>
 				<li itemscope="itemscope" class="nav-item">
@@ -250,5 +250,139 @@ nav.navbar {
         </div>
     </div>
 </div>
+
+
+<div class="modal" id="login">
+    <div class="modal-dialog">
+      <div class="modal-content">  
+          <div class="modal-body pb-0">
+            <div>
+              <h4 class="modal-title">Welcome to justboardrooms</h4>
+            </div>
+            <div class="pt-3">
+              <span class="modal-sub-title">Currently the Just Boardrooms website only allows access to hosting functionalities. 
+                To book a boardroom, please download our app on iOS or Android.</span>
+            </div>
+            <div class="img-model-signup" style="text-align: center;">
+              <img class="appleicon" src="/Images/signup-apple.png" style="margin:7px">
+              <img class="appleicon" src="/Images/android-signup.png" style="margin:7px">
+            </div>
+            <div class="pt-3 pb-3 text-center">
+
+              <form id="ltnw-login">
+                <!-- <div class="form-group"> -->
+                <div class="py-2">
+                  <input type="email" class="form-control" placeholder="Email" id="email" name="emaillist">
+                </div>
+                <div class="py-2">
+                  <input type="password" class="form-control" placeholder="Password" id="pwd" name="pwd">
+                </div>
+                <!-- </div> -->
+                <!-- <div class="form-group"> -->
+                <!-- </div> -->
+                <div class="alert-login-forms" id="add-error-bag">
+                  <ul id="list-login-errors">
+                  </ul>
+                </div>
+                <div class="py-2">
+                  <button  type="submit" id="btn-login" class="btn btn-jb col-12 p-2">LOG IN TO HOSTING</button>
+                </div>
+                <div class="text-left pb-4">
+                  <a class="reset_pass text-white" href="{{--{{url('/password/email')}} --}}">Forgot your password?</a>
+                </div>
+              </form>
+
+              <div class="modal-footer login-forms">
+                <div>
+                  <span class="text-white">Don't have an account?</span>
+                </div>
+                <div>
+                  <button onclick="event.preventDefault();addRegisterForm();" type="submit" class="btn btn-sign-up btn-register" data-toggle="modal" >SIGN UP</button>
+                </div>
+              </div>
+            
+            </div>
+
+          </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="register">
+    <div class="modal-dialog">
+      <div class="modal-content">  
+          <div class="modal-body pb-0">
+            <div>
+              <h4 class="modal-title">Start listing your boardroom for free</h4>
+            </div>
+            <div class="pt-3 pb-3 text-center">
+
+              <form id="ltnw-register">
+                <!-- <div class="form-group"> -->
+                <div class="row py-2">
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="First Name" id="first_name" name="first_name">
+                  </div>
+                  <div class="col-6">
+                    <input type="text" class="form-control" placeholder="Last Name" id="last_name" name="last_name">
+                  </div>
+                </div>
+                <div class="py-2">
+                  <input type="email" class="form-control" placeholder="Email" id="email_register" name="email_register">
+                </div>
+                <div class="py-2">
+                  <input type="password" class="form-control" placeholder="Password" id="pwd_register" name="pwd_register">
+                </div>
+                <div class="py-2">
+                  <input type="password" class="form-control" placeholder="Confirm password" id="c_password" name="c_password">
+                </div>
+                <input type="hidden" name="g-recaptcha-response" id="recaptcha">
+                <script src="https://www.google.com/recaptcha/api.js?render=6LfRf4MbAAAAAJIqLyaWsEVb8kQw7ZDiU4Wl-zKf"></script>
+                {{-- <script>
+                  grecaptcha.ready(function() {
+                      grecaptcha.execute('6LfRf4MbAAAAAJIqLyaWsEVb8kQw7ZDiU4Wl-zKf', {action: 'registration'}).then(function(token) {
+                          if (token) {
+                            document.getElementById('recaptcha').value = token;
+                          }
+                      });
+                  });
+                </script>                 --}}
+                <!-- </div> -->
+                <!-- <div class="form-group"> -->
+                <!-- </div> -->
+                <div class="alert-register-forms" id="add-error-bag-register">
+                  <ul id="list-register-errors">
+                  </ul>
+                </div>
+                <div class="py-2">
+                  <button  type="submit" id="btn-register" class="btn btn-jb col-12 p-2">CREATE MY ACCOUNT</button>
+                </div>
+              </form>
+
+              <div class="modal-footer register-forms">
+                <div>
+                  <span class="text-white">Already have an account?</span>
+                </div>
+                <div>
+                  <button onclick="event.preventDefault();loginForm();" type="submit" class="btn btn-sign-up btn-register" data-toggle="modal" >LOG IN</button>
+                </div>
+              </div>
+            
+            </div>
+
+          </div>
+
+      </div>
+    </div>
+  </div>  
+
+
+
+
+
+
+
+
 
 @endsection  
