@@ -18,7 +18,7 @@ nav.navbar {
 
 	<div class="container-fluid" style="z-index:101;">
 		<!-- Your site title as branding in the menu -->
-		<a href="https://justboardrooms.com/" class="navbar-brand custom-logo-link"><img width="464" height="100" src="https://cmsdev.justboardrooms.com/Images/Logo_New.svg" class="img-fluid" alt="Just Boardrooms"></a><!-- end custom logo -->
+		<a href="{{url('/')}}" ><img width="194" height="100" src="https://cmsdev.justboardrooms.com/Images/Logo_New.svg" class="img-fluid" alt="Just Boardrooms"></a><!-- end custom logo -->
 
 		<div id="navbarNavDropdown" class="collapse navbar-collapse top-menu">
 			<ul id="main-menu" class="navbar-nav nav-font ml-auto">
@@ -27,14 +27,14 @@ nav.navbar {
 				<li itemscope="itemscope" class="page-item-159 current_page_item active nav-item">
 					<a title="List A Space" href="#" class="nav-link" onclick="#">List A Space</a></li>
 					<li itemscope="itemscope" class="page-item-159 nav-item">
-					<a title="List A Space" href="#" class="nav-link" onclick="event.preventDefault();addLoginForm();">Login</a></li>                        
+					<a title="List A Space" href="{{--{{url('/listing/dashboard')}}--}}" class="nav-link" onclick="event.preventDefault();addLoginForm();">Login</a></li>                         
 				<!-- <li itemscope="itemscope" class="nav-item">
 					<a title="FAQ" href="https://justboardrooms.com/faq/" class="nav-link">FAQ</a></li>
 				<li itemscope="itemscope" class="nav-item">
-					<a title="The Why" href="https://justboardrooms.com/the-why/" class="nav-link">The Why</a></li> -->
-			</ul>
+					<a title="The Why" href="https://justboardrooms.com/the-why/" class="nav-link">The Why</a></li> --> 
+			</ul> 
 		</div>						
-	</div><!-- .container -->
+	</div><!-- .container --> 
 </nav> 
 <div class="dashboard-banner">
     <div id="listnowhero" class="jumbotron not-home p-0">
@@ -246,7 +246,7 @@ nav.navbar {
                 <img src="https://justboardrooms.com/wp-content/themes/understrap/images/orange-quote.png" />
             </div>
             <div class="quote">Just Boardrooms is extra money in my business’s pocket with minimal effort.”</div>
-            <div class="cite">Cindy Wilner-Lau <span class="spacer" style="color: #ff671d;">|</span><span class="job-title fst-italic"> Artist &amp; Studio Owner</span></div>
+            <div class="cite">Cindy Wilner-Lau <span class="spacer" style="color: #ff671d;">|</span><span class="job-title font-italic"> Artist &amp; Studio Owner</span></div>
         </div>
     </div>
 </div>
@@ -260,13 +260,13 @@ nav.navbar {
               <h4 class="modal-title">Welcome to justboardrooms</h4>
             </div>
             <div class="pt-3">
-              <span class="modal-sub-title">Currently the Just Boardrooms website only allows access to hosting functionalities. 
+              <span class="modal-sub-title">Currently the Just Boardrooms website only allows access to hosting functionalities.  
                 To book a boardroom, please download our app on iOS or Android.</span>
             </div>
             <div class="img-model-signup" style="text-align: center;">
-              <img class="appleicon" src="/Images/signup-apple.png" style="margin:7px">
-              <img class="appleicon" src="/Images/android-signup.png" style="margin:7px">
-            </div>
+              <img class="appleicon" src="{{ url('/imgs/signup-apple.png')}}" style="margin:7px"> 
+              <img class="appleicon" src="{{ url('/imgs/android-signup.png')}}" style="margin:7px">    
+        </div>
             <div class="pt-3 pb-3 text-center">
 
               <form id="ltnw-login">
@@ -385,4 +385,4 @@ nav.navbar {
 
 
 
-@endsection  
+@endsection    

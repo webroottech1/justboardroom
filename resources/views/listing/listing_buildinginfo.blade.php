@@ -1,4 +1,4 @@
-@extends('layouts.master')
+@extends('layouts.master') 
 @section('content')   
 <div class="listing-building-info py-5">
 	<div class="container">
@@ -75,6 +75,6 @@
 			</div>
 		</section>
 	</div>
-</div>  
+</div>    
   
 @endsection 

@@ -1,20 +1,5 @@
-<!doctype html>
-<html lang="en">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-
-        <!-- Bootstrap CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-         
-        <!-- Latest compiled JavaScript -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script> 
-        
-        <!---CSS link --->
-        <link rel="stylesheet" href="boardrooms_styl.css">
-    </head>
-  <body>
+@extends('layouts.master')
+@section('content')
 <div class="boardroom-banner">  
 	<div class="banner-box positon-relative">
 		<div class="banner-text">
@@ -39,10 +24,10 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> 
             <!----glasses image banner--->
     <div id="eyeglasses" class="container-fluid end-section mt-5 pt-5">  
-        <div class="row end-banner">
+        <div class="row mx-0 end-banner">
             <div class="col-md-2"></div>
             <div class="col-md-3 my-auto px-md-0 px-3">
                 <h3><span class="mr-3 mb-5"><img src="https://justboardrooms.com/wp-content/themes/understrap/images/orange_box.png"></span>Our vision</h3>
@@ -205,6 +190,5 @@
         </div>
     </div>
 </div>
-</body>
-</html>
 
+@endsection  

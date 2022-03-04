@@ -39,7 +39,7 @@ Route::get('/listing/about', function () {
 ///////////// End listing pages routes  ///////////////////
 
 Route::get('/the-why', function () {
-    return view('/the-whypage');
+    return view('the_whypage');
 })->name('the-why'); 
 
 // Route::get('/home', function () {

@@ -61,13 +61,13 @@
 								<option value="3">Three</option>
 							</select>
 						</div>	
-						<div class="col-auto">	
+						<div class="col-auto px-0">	
 							<label for="inputPassword6" class="col-form-label">SEE BOARDROOM</label>
 						</div>
 						<div class="col-auto">
 							<input type="text" id="search" class="form-control" aria-describedby="search" placeholder="Search by Name" />
 						</div>
-						<div class="col-auto">
+						<div class="col-auto px-0">
 							<label for="inputPassword6" class="col-form-label">SEARCH</label>
 						</div>
 					</div>
