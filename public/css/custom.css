@@ -1430,7 +1430,61 @@
     margin-left: 0;
     margin-top: 7px;
 }
+/* new popopopopop *//* new popopopopop *//* new popopopopop *//* new popopopopop */
 
+.loginpg {
+    background-image: url('../../imgs/popup-back.png'); 
+	background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+.loginpg .card {
+    border: 1px solid #505050;
+}
+.loginpg .card-body {
+    padding: 3em 5em 0.5em;
+    background-image: linear-gradient( rgba(95, 96, 88, 0.85), rgba(82, 78, 74, 0.9) ), url(/imgs/popup-back.png);
+}
+.loginpg h4.login-title {
+    font-size: 2.5rem;
+    color: #fff;
+	font-weight: 700;
+}
+.loginpg p.modal-sub-title {
+    font-size: 0.9rem;
+    color: #fff;
+    margin-top: 2em;
+}
+.loginpg .btn-jb {
+    background-color: #FF671D;
+    color: #fff;
+}
+.loginpg .frgtnpswd{
+	text-align: left;
+}
+.loginpg .frgtnpswd a{
+	text-decoration: none;
+}
+.loginpg .login-footer {
+    padding: 0.75em;
+    border-top: 1px solid #dee2e6;
+}
+.loginpg .login-footer .row {
+    align-items: center;
+	justify-content: center;
+}
+.loginpg .login-footer .btn-sign-up {
+    background-color: transparent;
+    border: 2px solid #fff;
+    color: #fff;
+}
+.loginpg input:focus, .loginpg select:focus {
+    box-shadow: none !important;
+    border: 1px solid #FF671D !important;
+    outline-width: 0 !important;
+}
+
+
+/* new popopopopop */
 
 /* login_popup */  /* register_popup */
 
