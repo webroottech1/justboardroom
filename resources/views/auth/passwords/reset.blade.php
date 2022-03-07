@@ -1,3 +1,4 @@
+
 @extends('layouts.master')
 
 @section('content')
@@ -11,14 +12,17 @@
 
                 <div class="card-body">
                     <form method="POST" action="{{ url('/password/reset') }}">
+
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">
+
 
                         <div class="form-group-reset row">
                             <label for="email" class="col-md-12">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-12">
+
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ $email ?? old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -29,10 +33,12 @@
                             </div>
                         </div>
 
+
                         <div class="form-group-reset row">
                             <label for="password" class="col-md-12">{{ __('Password') }}</label>
 
                             <div class="col-md-12">
+
                                 <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
 
                                 @error('password')
@@ -42,6 +48,7 @@
                                 @enderror
                             </div>
                         </div>
+
 
                         <div class="form-group-reset row">
                             <label for="password-confirm" class="col-md-12">{{ __('Confirm Password') }}</label>
@@ -54,11 +61,13 @@
                             <button type="submit" class="btn btn-jb col-12 font-weight-bold">
                                 {{ __('Reset Password') }}
                             </button>
+
                         </div>
                     </form>
                 </div>
             </div>
         </div>
+
             
         </div>
     </div>
@@ -176,4 +185,5 @@
   </div>  
     
 </div>   
+
 @endsection

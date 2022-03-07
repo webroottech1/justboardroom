@@ -13,13 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-
-
-
-
-
-////////////////listing pages routes ////////////////////////////
 Route::get('/', function () {
+
     return view('login-dashboard');
 })->name('login-dashboard');
 
@@ -54,23 +49,12 @@ Route::get('/listing/price-availability', function () {
 
 ///////////// End listing pages routes  ///////////////////
 
+
 Route::get('/the-why', function () {
     return view('the-whypage');
 })->name('the-why'); 
 
-// Route::get('/home', function () {
-//     return view('home');
-// })->name('home');
 
+Auth::routes();
 
-// Auth::routes();
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Auth::routes();
-
-// Route::get('/welcome', [App\Http\Controllers\HomeController::class, 'index'])->name('welcome');
-
-// Auth::routes();
-
-// Route::get('/mypage', [App\Http\Controllers\HomeController::class, 'index'])->name('mypage');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -1,3 +1,4 @@
+
 @extends('layouts.master')
 
 @section('content')
@@ -16,12 +17,14 @@
                         </div>
                     @endif
 
+
                     <form method="POST" action="{{ url('/password/email') }}">
                         @csrf
 
                         <div class="form-group-reset row col-md-12">
                             <label for="email" class="col-md-12 col-form-label">{{ __('E-Mail Address') }}</label>
                             <div class="col-md-12">
+
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 
                                 @error('email')
@@ -30,6 +33,7 @@
                                     </span>
                                 @enderror
                             </div>
+
 
                             <div class="d-flex col-md-12 mt-2">
                                 <button type="submit" class="btn btn-jb col-12 font-weight-bold">
@@ -44,6 +48,7 @@
                 </div>
             </div>
         </div>
+
             
         </div>
     </div>
@@ -162,3 +167,4 @@
     
 </div>   
    @endsection
+
