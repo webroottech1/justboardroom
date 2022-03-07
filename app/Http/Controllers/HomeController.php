@@ -23,7 +23,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         return view('listing/listing_dashboard');
     }
 }
