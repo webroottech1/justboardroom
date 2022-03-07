@@ -3,7 +3,9 @@ nav.navbar {
     display: none;
 }
 .jb_maincont nav.navbar {
-    display: block; 
+
+    display: block;
+
 }
 .jb_maincont {
     margin-top: 0 !important;
@@ -13,7 +15,8 @@ nav.navbar {
 }
 </style>
 @extends('layouts.master')
-@section('content') 
+@section('content')
+
 <nav class="navbar navbar-expand navbar-dark navbar-custom fixed-top navbar-header-wrapper">
 
 	<div class="container-fluid" style="z-index:101;">
@@ -27,15 +30,17 @@ nav.navbar {
 				<li itemscope="itemscope" class="page-item-159 current_page_item active nav-item">
 					<a title="List A Space" href="#" class="nav-link" onclick="#">List A Space</a></li>
 					<li itemscope="itemscope" class="page-item-159 nav-item">
-					<a title="List A Space" href="{{--{{url('/listing/dashboard')}}--}}" class="nav-link" onclick="event.preventDefault();addLoginForm();">Login</a></li>                         
+
+					<a title="List A Space" href="{{url('/login')}}" class="nav-link" >Login</a></li>
 				<!-- <li itemscope="itemscope" class="nav-item">
 					<a title="FAQ" href="https://justboardrooms.com/faq/" class="nav-link">FAQ</a></li>
 				<li itemscope="itemscope" class="nav-item">
-					<a title="The Why" href="https://justboardrooms.com/the-why/" class="nav-link">The Why</a></li> --> 
-			</ul> 
-		</div>						
-	</div><!-- .container --> 
-</nav> 
+					<a title="The Why" href="https://justboardrooms.com/the-why/" class="nav-link">The Why</a></li> -->
+			</ul>
+		</div>
+	</div><!-- .container -->
+</nav>
+
 <div class="dashboard-banner">
     <div id="listnowhero" class="jumbotron not-home p-0">
         <div class="home-container container h-100" id="content">
@@ -254,18 +259,22 @@ nav.navbar {
 
 <div class="modal" id="login">
     <div class="modal-dialog">
-      <div class="modal-content">  
+
+      <div class="modal-content">
+
           <div class="modal-body pb-0">
             <div>
               <h4 class="modal-title">Welcome to justboardrooms</h4>
             </div>
             <div class="pt-3">
-              <span class="modal-sub-title">Currently the Just Boardrooms website only allows access to hosting functionalities.  
+
+              <span class="modal-sub-title">Currently the Just Boardrooms website only allows access to hosting functionalities.
                 To book a boardroom, please download our app on iOS or Android.</span>
             </div>
             <div class="img-model-signup" style="text-align: center;">
-              <img class="appleicon" src="{{ url('/imgs/signup-apple.png')}}" style="margin:7px"> 
-              <img class="appleicon" src="{{ url('/imgs/android-signup.png')}}" style="margin:7px">    
+              <img class="appleicon" src="{{ url('/imgs/signup-apple.png')}}" style="margin:7px">
+              <img class="appleicon" src="{{ url('/imgs/android-signup.png')}}" style="margin:7px">
+
         </div>
             <div class="pt-3 pb-3 text-center">
 
@@ -300,7 +309,9 @@ nav.navbar {
                   <button onclick="event.preventDefault();addRegisterForm();" type="submit" class="btn btn-sign-up btn-register" data-toggle="modal" >SIGN UP</button>
                 </div>
               </div>
-            
+
+
+
             </div>
 
           </div>
@@ -311,7 +322,9 @@ nav.navbar {
 
   <div class="modal" id="register">
     <div class="modal-dialog">
-      <div class="modal-content">  
+
+      <div class="modal-content">
+
           <div class="modal-body pb-0">
             <div>
               <h4 class="modal-title">Start listing your boardroom for free</h4>
@@ -368,21 +381,15 @@ nav.navbar {
                   <button onclick="event.preventDefault();loginForm();" type="submit" class="btn btn-sign-up btn-register" data-toggle="modal" >LOG IN</button>
                 </div>
               </div>
-            
+
+
             </div>
 
           </div>
 
       </div>
     </div>
-  </div>  
 
+  </div>
+@endsection
 
-
-
-
-
-
-
-
-@endsection    

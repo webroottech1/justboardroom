@@ -81,11 +81,11 @@
   <link href="https://fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
   <!-- Custom styles for this template -->
   <link href="{{ asset('css/one-page-wonder.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('css/custom.css') }}" rel="stylesheet">  
+  <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<!---- /////////////////////           ----> 
+<!---- /////////////////////           ---->
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!-- <script type="text/javascript" src="{{asset('js/external/axios.min.js')}}"></script> -->
 
