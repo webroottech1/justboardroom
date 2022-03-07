@@ -8,7 +8,9 @@
         <div class="col-md-8">
             <div class="card">
 
+
                 <div class="card-header">{{ __('Login') }}</div>
+
 
                 <div class="card-body">
                     <fozrm method="POST" action="{{ route('login') }}">
@@ -99,6 +101,7 @@
 								<img class="appleicon" src="imgs/android-signup.png" style="margin:7px">
 							</div>
 							<div class="pt-3 pb-3 text-center">
+
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
 									<div class="form-group row">
@@ -133,6 +136,7 @@
                                             </button>
                                         </div>
                                     </div>
+
 								</form>
 								<div class="login-footer">
 									<div class="row mx-auto">
@@ -140,10 +144,12 @@
 											<p class="text-white m-0">Don't have an account?</p>
 										</div>
 										<div class="col-md-4">
+
                                             <a class="btn btn-sign-up btn-register" href="{{ route('register') }}">{{ __('SIGN UP') }}</a>
 
 										</div>
 									</div>
+
 								</div>
 							</div>
                         </div>
