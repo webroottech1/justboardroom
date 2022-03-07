@@ -1436,6 +1436,7 @@
     background-image: url('../../imgs/popup-back.png'); 
 	background-repeat: no-repeat;
     background-attachment: fixed;
+    background-size: cover;
 }
 .loginpg .card {
     border: 1px solid #505050;
