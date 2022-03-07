@@ -7,11 +7,11 @@
             <ul class="navbar-nav">
                 <div class="header-logo" style="margin: auto;"><a href="{{url('/')}}"><img src="https://cmsdev.justboardrooms.com/Images/Logo_New.svg" width="250" ></a></div>
             
-                    <div class="header-link" id="header-link-top"> 
+                    <div class="header-link" id="header-link-top">  
                         <ul class="navbar-nav top-header">
                             <li class="nav-item11 user-myacc">
                                 <a type="submit" class="btn dropdown-toggle" data-toggle="dropdown">
-                                    My account
+                                     My account
                                 </a>
                                 <div class="dropdown-menu">
                                 <a class="nav-link header-account-link" href="/api/listing/173/userProfile#profile">Account</a>
@@ -42,7 +42,7 @@
                                     <a class="nav-link" href="{{url('/listing/buildinginfo')}}">List a space</a>
                              </li>
                             <li class="nav-item">
-                                    <a class="nav-link" href="#">FAQ</a>
+                                    <a class="nav-link" href="#">FAQ</a> 
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{url('/the-why')}}">The Why</a>
@@ -51,7 +51,7 @@
                                 <a class="nav-link" href="#">News</a>
                             </li>                            
                         </ul>
-                    </div>
+                    </div> 
 
             </ul>
         </div>
