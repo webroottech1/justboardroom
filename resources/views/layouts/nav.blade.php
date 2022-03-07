@@ -13,7 +13,7 @@
 </div> -->
 <div id="wrapper-navbar" class="sticky-top">
     <!-- <nav class="navbar navbar-expand-md navbar-dark header-top jb-nav-bg-secondary navbar-custom">
-      
+
         <div id="navbarNavDropdown" class="collapse navbar-collapse bottom-menu">
             <ul id="secondary-menu" class="navbar-nav nav-font ml-auto">
                 <li class="menu-item menu-item-type-post_type menu-item-object-page menu-item-186 nav-item">
@@ -23,13 +23,13 @@
                 <li class="drift-open-chat menu-item menu-item-type-custom menu-item-object-custom menu-item-514 nav-item">
                     <a title="Live Chat" href="#" class="nav-link">Live Chat</a></li>
             </ul>
-        </div>        
+        </div>
     </nav> -->
     <nav class="navbar navbar-expand-md navbar-dark header-top jb-nav-bg navbar-custom">
 
         <div class="container-fluid" style="z-index:101;">
             <!-- Your site title as branding in the menu -->
-            <a href="https://justboardrooms.com/" class="navbar-brand custom-logo-link"><img width="464" height="100" 
+            <a href="https://justboardrooms.com/" class="navbar-brand custom-logo-link"><img width="464" height="100"
             src="{{ asset('/Images/Logo_New.svg')}}" class="img-fluid" alt="Just Boardrooms"></a><!-- end custom logo -->
 
             <div id="navbarNavDropdown" class="collapse navbar-collapse top-menu">
@@ -39,18 +39,18 @@
                     <li itemscope="itemscope" class="page-item-159 current_page_item active nav-item">
                         <a title="List A Space" href="" class="nav-link" onclick="event.preventDefault();addLoginForm();">List A Space</a></li>
                         <li itemscope="itemscope" class="page-item-159 nav-item">
-                        <a title="List A Space" href="#" class="nav-link" onclick="event.preventDefault();addLoginForm();">Login</a></li>                        
+                        <a title="List A Space" href="#" class="nav-link" href="{{url('/login')}}">Login</a></li>
                     <!-- <li itemscope="itemscope" class="nav-item">
                         <a title="FAQ" href="https://justboardrooms.com/faq/" class="nav-link">FAQ</a></li>
                     <li itemscope="itemscope" class="nav-item">
                         <a title="The Why" href="https://justboardrooms.com/the-why/" class="nav-link">The Why</a></li> -->
                 </ul>
-            </div>						
+            </div>
         </div><!-- .container -->
     </nav><!-- .site-navigation -->
 
-</div>        
-@endif        
+</div>
+@endif
 
 @if(Auth::check())
 <nav class="navbar navbar-expand navbar-dark navbar-custom fixed-top navbar-header-wrapper">
@@ -62,7 +62,7 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
                 <div class="header-logo" style="margin: auto;"><a href="/api/dashboard"><img src="{{ asset('/Images/Logo_New.svg')}}"  width="194" height="36"></a></div>
-            
+
                     <div class="header-link" id="header-link-top">
                         <ul class="navbar-nav top-header">
                             <li class="nav-item">
@@ -98,8 +98,8 @@
                             <li class="nav-item11 user-profile-pic">
                                 <button type="submit" class="btn dropdown-toggle" data-toggle="dropdown">
                                     @php $initial = strtoupper(substr(Auth::user()->name, 0, 1));
-                                    
-                                    
+
+
                                     @endphp
                                     @if(isset(Auth::user()->profile->profile_pic))
                                         <div class="profile-pic">

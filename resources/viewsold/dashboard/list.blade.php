@@ -49,7 +49,7 @@
               <div class="form-group">
                 <input type="password" class="form-control" placeholder="Enter password" id="pwd" name="pwd">
               </div>
-              <button  type="submit" id="btn-login" class="btn btn-primary">Login</button>
+              <button type="submit" id="btn-login" class="btn btn-primary">Login</button>
               <a class="reset_pass" href="{{url('/password/email')}}">Forget your password?</a>
         </div>
             </form>

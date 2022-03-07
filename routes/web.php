@@ -14,23 +14,44 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('login_dashboard');
+
+    return view('login-dashboard');
 })->name('login-dashboard');
 
+
 Route::get('/listing/dashboard', function () {
-    return view('/listing/listing_dashboard');
+    return view('/listing/listing-dashboard');
 })->name('listing-dashboard');
 
 Route::get('/listing/buildinginfo', function () {
-    return view('/listing/listing_buildinginfo');
+    return view('/listing/listing-buildinginfo');
 })->name('listing-buildinginfo');
 
 Route::get('/listing/about', function () {
-    return view('/listing/listing_about');
+    return view('/listing/listing-about');
 })->name('listing-about');
 
+Route::get('/listing/approve-setting', function () {
+    return view('/listing/listing-approve-setting');
+})->name('listing-approve-setting');
+
+Route::get('/listing/hosting-pref', function () {
+    return view('/listing/listing-hosting-pref');
+})->name('listing-listing-hosting-pref');
+
+Route::get('/listing/listing-photos', function () {
+    return view('/listing/listing-photos');
+})->name('listing-listing-photos');
+
+Route::get('/listing/price-availability', function () {
+    return view('/listing/listing-price-availability');
+})->name('listing-price-availability');
+
+///////////// End listing pages routes  ///////////////////
+
+
 Route::get('/the-why', function () {
-    return view('the_whypage');
+    return view('the-whypage');
 })->name('the-why'); 
 
 
