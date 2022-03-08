@@ -91,8 +91,8 @@
 
 
 
-  <script type="text/javascript" src="{{asset('js/list-now.js')}}"></script>
-  <script type="text/javascript" src="{{asset('js/progress.js')}}"></script>
+{{--   <script type="text/javascript" src="{{asset('js/list-now.js')}}"></script>
+<script type="text/javascript" src="{{asset('js/progress.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/addressAuto.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/priceavailability.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/sync-calandar.js')}}"></script>
@@ -106,7 +106,7 @@
   <script type="text/javascript" src="{{asset('js/headerfooter.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/external/bite.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/request.js')}}"></script>
-  <script type="text/javascript" src="{{asset('js/template.js')}}"></script>
+  <script type="text/javascript" src="{{asset('js/template.js')}}"></script> --}}
 
   <link rel="apple-touch-icon" sizes="180x180" href="{{asset('Images/icons/apple-touch-icon.png')}}">
   <link rel="icon" type="image/png" sizes="32x32" href="{{asset('Images/icons/favicon-32x32.png')}}">
