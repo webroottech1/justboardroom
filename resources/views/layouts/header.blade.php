@@ -6,11 +6,11 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav">
-
                 <div class="header-logo" style="margin: auto;"><a href="{{ url('/') }}"><img
                             src="https://cmsdev.justboardrooms.com/Images/Logo_New.svg" width="250"></a></div>
 
                 <div class="header-link" id="header-link-top">
+                    @if (auth()->user() != NULL)
                     <ul class="navbar-nav top-header">
                         <li class="nav-item11 user-myacc">
                             <a type="submit" class="btn dropdown-toggle" data-toggle="dropdown">
@@ -24,9 +24,7 @@
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                   document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
-
                                 </a>
-
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST"
                                     style="display: none;">
@@ -47,7 +45,7 @@
                         </li>
 
                     </ul>
-
+                    @endif
                     <ul class="navbar-nav bottom-header">
                         <li class="nav-item active">
                             <a class="nav-link active" href="{{ url('/listing/dashboard') }}">Find a space</a>
@@ -66,8 +64,6 @@
                         </li>
                     </ul>
                 </div>
-
-
             </ul>
         </div>
     </div>

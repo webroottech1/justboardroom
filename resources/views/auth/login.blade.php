@@ -8,9 +8,7 @@
         <div class="col-md-8">
             <div class="card">
 
-
                 <div class="card-header">{{ __('Login') }}</div>
-
 
                 <div class="card-body">
                     <fozrm method="POST" action="{{ route('login') }}">
@@ -87,11 +85,11 @@
 @extends('layouts.master')
 @section('content')
 <div class="loginpg">
-    <main class="py-4">
+    <main class="py-5">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-6">
-                    <div class="card">
+                    <div class="card loginpgform">
                         <!-- <div class="card-header">Login</div> -->
                         <div class="card-body">
 							<h4 class="login-title">Welcome to justboardrooms</h4>
@@ -101,13 +99,12 @@
 								<img class="appleicon" src="imgs/android-signup.png" style="margin:7px">
 							</div>
 							<div class="pt-3 pb-3 text-center">
-
                                 <form method="POST" action="{{ route('login') }}">
                                     @csrf
 									<div class="form-group row">
 
                                         <div class="col-md-12">
-                                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                            <input id="email" placeholder="Email"  type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                             @error('email')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -119,7 +116,7 @@
 									<div class="form-group row">
 
                                         <div class="col-md-12">
-                                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                                            <input id="password" type="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
                                             @error('password')
                                                 <span class="invalid-feedback" role="alert">
                                                     <strong>{{ $message }}</strong>
@@ -130,13 +127,12 @@
 
 
 									<div class="form-group row mb-0">
-                                        <div class="col-md-8 offset-md-4">
-                                            <button type="submit" class="btn btn-jb col-12 p-2">
+                                        <div class="col-12">
+                                            <button type="submit" class="btn  w-100 loginbtnjb col-12 p-2">
                                                 {{ __('LOG IN TO HOSTING') }}
                                             </button>
                                         </div>
                                     </div>
-
 								</form>
 								<div class="login-footer">
 									<div class="row mx-auto">
@@ -144,12 +140,10 @@
 											<p class="text-white m-0">Don't have an account?</p>
 										</div>
 										<div class="col-md-4">
-
                                             <a class="btn btn-sign-up btn-register" href="{{ route('register') }}">{{ __('SIGN UP') }}</a>
 
 										</div>
 									</div>
-
 								</div>
 							</div>
                         </div>

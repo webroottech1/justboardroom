@@ -10,48 +10,48 @@
     font-weight: normal;
     src: local('Fonts/Myriad Pro Regular'), url('Fonts/MYRIADPRO-REGULAR.woff') format('woff');
     }
-   
+
     @font-face {
     font-family: 'Myriad Pro Condensed';
     font-style: normal;
     font-weight: normal;
     src: local('Fonts/Myriad Pro Condensed'), url('Fonts/MYRIADPRO-COND.woff') format('woff');
     }
-   
+
     @font-face {
     font-family: 'Myriad Pro Condensed Italic';
     font-style: normal;
     font-weight: normal;
     src: local('Myriad Pro Condensed Italic'), url('MYRIADPRO-CONDIT.woff') format('woff');
     }
-    
+
     @font-face {
     font-family: 'Myriad Pro Light';
     font-style: normal;
     font-weight: normal;
     src: local('Fonts/Myriad Pro Light'), url('Fonts/MyriadPro-Light.woff') format('woff');
     }
-    
+
     @font-face {
     font-family: 'Myriad Pro Semibold';
     font-style: normal;
     font-weight: normal;
     src: local('Fonts/Myriad Pro Semibold'), url('Fonts/MYRIADPRO-SEMIBOLD.woff') format('woff');
     }
-    
+
     @font-face {
     font-family: 'Myriad Pro Semibold Italic';
     font-style: normal;
     font-weight: normal;
     src: local('Fonts/Myriad Pro Semibold Italic'), url('Fonts/MYRIADPRO-SEMIBOLDIT.woff') format('woff');
     }
-    
+
     @font-face {
     font-family: 'Myriad Pro Bold Condensed';
     font-style: normal;
     font-weight: normal;
     src: local('Fonts/Myriad Pro Bold Condensed'), url('Fonts/MYRIADPRO-BOLDCOND.woff') format('woff');
-    } 
+    }
 
     @font-face {
     font-family: 'Myriad Pro Bold';
@@ -59,14 +59,14 @@
     font-weight: normal;
     src: local('Fonts/Myriad Pro Bold'), url('Fonts/MYRIADPRO-BOLD.woff') format('woff');
     }
-    
+
     @font-face {
     font-family: 'Myriad Pro Bold Italic';
     font-style: normal;
     font-weight: normal;
     src: local('Myriad Pro Bold Italic'), url('MYRIADPRO-BOLDIT.woff') format('woff');
     }
-    
+
     @font-face {
     font-family: 'Myriad Pro Bold Condensed Italic';
     font-style: normal;
@@ -81,7 +81,7 @@
   src: local('Myriad Pro Semibold'), url('./resources/assets/fonts/MYRIADPRO-SEMIBOLD.woff') format('woff');
 }
 @font-face {
-  font-family: 'Myriad Pro Regular'; 
+  font-family: 'Myriad Pro Regular';
   font-style: normal;
   font-weight: normal;
   src: local('Myriad Pro Regular'), url('/fonts/MYRIADPRO-REGULAR.woff') format('woff');
@@ -114,7 +114,7 @@
 	background-repeat: no-repeat;
 	background-position: center;
 	padding: 17em 0;
-	background-size: cover; 
+	background-size: cover;
 }
 .banner-text {
     position: absolute;
@@ -224,7 +224,7 @@
     font-weight: 500;
     font-family: 'Montserrat';
 }
-.just-booking .app a.jb-button.text-uppercase.open-host-account, 
+.just-booking .app a.jb-button.text-uppercase.open-host-account,
 .just-booking .app a.jb-button.text-uppercase.section4-button {
     font-size: 17px;
     font-weight: 500;
@@ -269,7 +269,7 @@
     color: #fff;
     font-family: 'Montserrat';
     font-weight: 500;
-} 
+}
 .endsection-copy.my-5 {
     color: #fff;
     font-size: 17px;
@@ -358,7 +358,7 @@
     color: #686058;
     text-align: center;
 }
-.dashboard-end-section { 
+.dashboard-end-section {
     background-image: url('https://host.justboardrooms.com/Images/cindy-lau.jpg');
 	background-size: cover;
     background-repeat: no-repeat;
@@ -484,7 +484,7 @@
     font-size: 35px;
     font-family: 'Roboto';
     font-weight: bold;
-} 
+}
 .listing_dashboard .listing-inbox-txt-top {
     font-size: 16px;
     font-weight: 600;
@@ -544,7 +544,7 @@
     font-weight: 600;
 	padding-left: 4px;
 }
-.view-report li:first-child { 
+.view-report li:first-child {
     text-align: center;
     width: 107px;
 }
@@ -654,11 +654,11 @@
     text-decoration: none;
     font-family: 'Roboto';
     font-weight: 500;
-    padding: 4px 14px; 
+    padding: 4px 14px;
     border: 2px solid #ff671d;
     border-radius: 8px;
 	display: block;
-    margin-left: 5px; 
+    margin-left: 5px;
 }
 .dashboard-listing .for-incomplete .list-action .settings a{
 	padding: 4px 7px;
@@ -747,7 +747,7 @@
     content: " *";
     color: red;
 }
-.listing-about-br .input-bb-orange, 
+.listing-about-br .input-bb-orange,
 .listing-about-br .select-bb-gray {
     border: none !important;
     border-radius: 9px !important;
@@ -895,7 +895,7 @@
     height: 73px;
     background: #000;
     position: absolute;
-    left: 54px; 
+    left: 54px;
     top: 11px;
     z-index: -1;
 }
@@ -950,7 +950,7 @@
 .listing-building-info .frm-listing-address span.ifaplicable {
     font-size: 20px;
 }
-.listing-building-info .input-bb-orange, 
+.listing-building-info .input-bb-orange,
 .listing-building-info .input-bb-gray {
     border: none;
     border-radius: 9px;
@@ -967,9 +967,9 @@
 	background-color: #ff671d;
     border: 2px solid #ff671d;
 }
-.listing-building-info  [type=button]:not(:disabled), 
-.listing-building-info [type=reset]:not(:disabled), 
-.listing-building-info [type=submit]:not(:disabled), 
+.listing-building-info  [type=button]:not(:disabled),
+.listing-building-info [type=reset]:not(:disabled),
+.listing-building-info [type=submit]:not(:disabled),
 .listing-building-info button:not(:disabled) {
     cursor: pointer;
 }
@@ -1003,7 +1003,7 @@
     margin: 0 18px
 }
 .listing-photos .dropzone.dz-clickable,
-.listing-photos .dropzone.dz-clickable .dz-message, 
+.listing-photos .dropzone.dz-clickable .dz-message,
 .listing-photos  .dropzone.dz-clickable .dz-message * {
     cursor: pointer;
 }
@@ -1092,72 +1092,72 @@
     padding: 6px 12em 6px 6px;
 }
 
-/* 
- .price-availability .switch-input { 
-     display: none; 
- } 
- .price-availability .question-wrapper .txt-switch-wrapper .switch-wrapper { 
-     position: relative; 
-     border: 2px solid #FF671D; 
-     height: 44px; 
-     border-radius: 5px; 
- } 
- .price-availability .question-wrapper .txt-switch-wrapper .switch-wrapper .switch-label { 
-     height: 40px; 
-     margin-bottom: 0px !important; 
-     background-color: transparent; 
-     color: #000; 
-     font-size: 20px; 
-     padding-top: 5px; 
-     width: 59px; 
- } 
- .price-availability .switch-label-off { 
-     padding-left: 2px; 
- } 
- .price-availability .switch-label { 
-     position: relative; 
-     z-index: 2; 
-     float: left; 
-     width: 58px; 
-     line-height: 26px; 
-     font-size: 11px; 
-     color: rgba(255, 255, 255, 0.35); 
-     text-align: center; 
-     text-shadow: 0 1px 1px rgb(0 0 0  45%); 
-     cursor: pointer; 
- } 
- .price-availability .question-wrapper .txt-switch-wrapper .switch-wrapper .switch-input:checked + .switch-label { 
-     background-color: #FF671D; 
-	 color: #fff; 
- } 
+/*
+ .price-availability .switch-input {
+     display: none;
+ }
+ .price-availability .question-wrapper .txt-switch-wrapper .switch-wrapper {
+     position: relative;
+     border: 2px solid #FF671D;
+     height: 44px;
+     border-radius: 5px;
+ }
+ .price-availability .question-wrapper .txt-switch-wrapper .switch-wrapper .switch-label {
+     height: 40px;
+     margin-bottom: 0px !important;
+     background-color: transparent;
+     color: #000;
+     font-size: 20px;
+     padding-top: 5px;
+     width: 59px;
+ }
+ .price-availability .switch-label-off {
+     padding-left: 2px;
+ }
+ .price-availability .switch-label {
+     position: relative;
+     z-index: 2;
+     float: left;
+     width: 58px;
+     line-height: 26px;
+     font-size: 11px;
+     color: rgba(255, 255, 255, 0.35);
+     text-align: center;
+     text-shadow: 0 1px 1px rgb(0 0 0  45%);
+     cursor: pointer;
+ }
+ .price-availability .question-wrapper .txt-switch-wrapper .switch-wrapper .switch-input:checked + .switch-label {
+     background-color: #FF671D;
+	 color: #fff;
+ }
 
- .price-availability .switch-input:checked + .switch-label { 
-     font-weight: bold; 
-     color: rgba(0, 0, 0, 0.65); 
-     text-shadow: 0 1px rgb(255 255 255  25%); 
-     transition: 0.15s ease-out; 
-     transition-property: color, text-shadow; 
- } 
- .price-availability .switch-label-on { 
-     padding-right: 2px; 
- } 
- .price-availability .switch-input:checked + .switch-label-on ~ .switch-selection { 
-     left: 60px; 
- } 
- .price-availability .switch-selection { 
-     position: absolute; 
-     z-index: 1; 
-     top: 2px; 
-     left: 2px; 
-     display: block; 
-     width: 58px; 
-     height: 36px; 
-     border-radius: 3px; 
-     background-color: #FFAF93; 
-     background: linear-gradient(top, #f16e16, #FFAF93); 
-     box-shadow: inset 0 1px rgb(255 255 255  50%), 0 0 2px rgb(0 0 0  20%); 
-     transition: left 0.15s ease-out; 
- } 
+ .price-availability .switch-input:checked + .switch-label {
+     font-weight: bold;
+     color: rgba(0, 0, 0, 0.65);
+     text-shadow: 0 1px rgb(255 255 255  25%);
+     transition: 0.15s ease-out;
+     transition-property: color, text-shadow;
+ }
+ .price-availability .switch-label-on {
+     padding-right: 2px;
+ }
+ .price-availability .switch-input:checked + .switch-label-on ~ .switch-selection {
+     left: 60px;
+ }
+ .price-availability .switch-selection {
+     position: absolute;
+     z-index: 1;
+     top: 2px;
+     left: 2px;
+     display: block;
+     width: 58px;
+     height: 36px;
+     border-radius: 3px;
+     background-color: #FFAF93;
+     background: linear-gradient(top, #f16e16, #FFAF93);
+     box-shadow: inset 0 1px rgb(255 255 255  50%), 0 0 2px rgb(0 0 0  20%);
+     transition: left 0.15s ease-out;
+ }
  */
 
 .price-availability .switch-label {
@@ -1346,7 +1346,7 @@
     display: flex;
     flex-wrap: wrap;
     align-content: flex-start;
-}	
+}
 .hosting-preference .hours-duration.select-bb-gray {
     padding: 4px 11rem 4px 6px;
 	width: calc( 94% - 40px);
@@ -1409,7 +1409,7 @@
     background: #f0f0f0;
     font-size: 16px;
     margin-right: 1.5em;
-    border-radius: 3px; 
+    border-radius: 3px;
 }
 .approval-setting .chkbox-wrapper .bx input:checked {
     background-color: #ff671d;
@@ -1432,19 +1432,32 @@
 }
 /* new popopopopop *//* new popopopopop *//* new popopopopop *//* new popopopopop */
 
-.loginpg {
-    background-image: url('../../imgs/popup-back.png'); 
+.loginpg ,
+.registerpage{
+    background-image: url('../../imgs/popup-back.png');
 	background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: cover;
 }
+.loginpgform input,
+.jb-registerform input {
+    color: #000;
+    padding: 25px 15px;
+}
+.loginpgform input::placeholder,
+.jb-registerform input::placeholder {
+    color: #000;
+    padding: 25px 15px;
+}
 .loginpg .card {
     border: 1px solid #505050;
 }
+.jb-registerform .card-body ,
 .loginpg .card-body {
     padding: 3em 5em 0.5em;
     background-image: linear-gradient( rgba(95, 96, 88, 0.85), rgba(82, 78, 74, 0.9) ), url(/imgs/popup-back.png);
 }
+.register-title,
 .loginpg h4.login-title {
     font-size: 2.5rem;
     color: #fff;
@@ -1455,7 +1468,11 @@
     color: #fff;
     margin-top: 2em;
 }
-.loginpg .btn-jb {
+.loginpg .loginbtnjb  {
+    background-color: #FF671D;
+    color: #fff;
+}
+.registerpage .registerbtnjb  {
     background-color: #FF671D;
     color: #fff;
 }
@@ -1465,6 +1482,7 @@
 .loginpg .frgtnpswd a{
 	text-decoration: none;
 }
+.registerpage .login-footer,
 .loginpg .login-footer {
     padding: 0.75em;
     border-top: 1px solid #dee2e6;
@@ -1533,11 +1551,11 @@
     background-color: transparent;
     border: 2px solid #fff;
     color: #fff;
-} 
+}
 
 
 #login .modal-dialog .modal-content, #register .modal-dialog .modal-content {
-    background: linear-gradient( rgba(104, 96, 88, 0.85), rgba(82, 78, 74, 0.9) ), url(/imgs/popup-back.png); 
+    background: linear-gradient( rgba(104, 96, 88, 0.85), rgba(82, 78, 74, 0.9) ), url(/imgs/popup-back.png);
 }
 #register input, #register select {
     padding: 2px;
@@ -1564,7 +1582,7 @@
     color: #ffffffbf !important;
 }
 .user-myacc.show a{
-    color: #ffffffbf !important; 
+    color: #ffffffbf !important;
 }
 .navbar-nav.top-header .user-myacc.show > a {
     color: #ffffffbf !important;
@@ -1641,7 +1659,7 @@
 #main-menu {
     /* border-top: solid 1px rgba(255, 103, 29, 1); */
     padding-top: 46px;
-}	
+}
 
 ul.navbar-nav ul li:last-child a {
     padding-right: 0 !important;
@@ -1659,7 +1677,7 @@ ul.navbar-nav ul li.user-myacc {
 }
 .navbar-nav .dropdown-menu a:hover {
     background-color: #686058;
-} 
+}
 .navbar ul.navbar-nav.top-header a {
     text-decoration: 2.5px underline #ff671d;
     text-underline-offset: 9px;
@@ -1667,7 +1685,7 @@ ul.navbar-nav ul li.user-myacc {
 }
 ul.navbar-nav.top-header .dropdown-menu a {
     text-decoration: none;
-}  
+}
 /* footer */
 #wrapper-footer-full, #wrapper-static-hero {
     background-color: #686058!important;
@@ -1687,7 +1705,7 @@ ul.navbar-nav.top-header .dropdown-menu a {
     font-weight: inherit;
     font-style: inherit;
     font-size: 100%;
-    font-family: inherit; 
+    font-family: inherit;
 }
 .footer-nav-list ul {
     list-style-type: none;
@@ -1722,7 +1740,6 @@ ul.navbar-nav.top-header .dropdown-menu a {
 }
 .jb_maincont {
     margin-top: 89px;
-}  
+}
 
 
- 

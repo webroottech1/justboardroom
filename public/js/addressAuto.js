@@ -3,10 +3,11 @@ $(document).on('keyup','input#list-address',function (e) {
   document.getElementById("btn-address").disabled = true;
   $("#frmlistingaddress").find('#btn-address').removeClass("listaddress-btn-active");
   $("#frmlistingaddress").find('#btn-address').addClass("listaddress-btn-notactive");
-  map=new google.maps.Map(document.getElementById("map"));
+  map = new google.maps.Map(document.getElementById("map"));
   $('.addressmap #map').height(0);
 
 });
+
 google.maps.event.addDomListener(window, 'load', function () {
     initAutocomplete();
 });
