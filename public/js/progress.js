@@ -127,10 +127,7 @@ function addBoardroomInfo() {
         .map(function () { return $(this).val(); }).get();
 
     var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    var headers = {
-        "Access-Control-Allow-Origin": "*",
-        'Authorization': `Bearer ${cookieValue}`,
-    }
+
     var building = [];
 
     $.each($("input[name='building-check']:checked"), function () {
@@ -146,8 +143,8 @@ function addBoardroomInfo() {
     $.ajax({
         url: '/api/listing/add/boardroom-info',
         type: 'POST',
-        headers: headers,
         data: {
+
             name: $('#bd-name').val(),
             description: $('#bd-desc').val(),
             capacity_id: $('#bd-capacity').val(),
@@ -160,6 +157,9 @@ function addBoardroomInfo() {
         crossDomain: true,
         timeout: 86400,
         success: function (data) {
+
+
+
             $('.listing-alert-2').append('<li> Boardroom Info: Save Sucessfully </li>').show().delay(2000).hide(500);
             $('.listing-alert-2').addClass('alert-success').removeClass('alert-danger');
 
@@ -214,87 +214,7 @@ function addBoardroomPic() {
     });
 }
 
-function addbuildinginfo(){
-    $(".listing-alert-1").html('');
-    var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    var headers = {
-        "Access-Control-Allow-Origin": "*",
-        'Authorization': `Bearer ${cookieValue}`,
-    }
-    var current_fs, next_fs, previous_fs;
-    event.preventDefault();
 
-    var address = $('#list-address').val();
-    if (address == "") {
-        $(".listing-alert-1").append('<li>Building Info: Please Enter a Valid Address</li>');
-        $('.listing-alert-1').show().addClass('alert-danger');
-        return false;
-    }
-
-    if(($('#map').height() == 0)){
-        $(".listing-alert-1").append('<li>Building Info: Make sure the pin in the map is in the correct location.</li>');
-        $('.listing-alert-1').show().addClass('alert-danger');
-        return false;
-    }
-
-    $.ajax({
-        url: '/api/listing/add/address',
-        type: 'POST',
-        headers: headers,
-        data: {
-            formatted_address: $("#frmlistingaddress input[name=listA]").val(),
-            postal_code: $("#postalcode").val(),
-            lat: $("#lat").val(),
-            lng: $("#lng").val(),
-            list_id: $("#list_id").val(),
-            building_name: $("#building-name").val(),
-            intersection_a: $("#intersection-a").val(),
-            intersection_b: $("#intersection-b").val(),
-            country:$("#country").val(),
-            province:$("#province").val()
-        },
-        dataType: 'json',
-        crossDomain: true,
-        timeout: 86400,
-        success: function (data) {
-            $('.listing-alert-1').append('<li> Building Info: Save Sucessfully </li>').show().delay(2000).hide(500);
-            $('.listing-alert-1').addClass('alert-success').removeClass('alert-danger');
-            current_fs = $("#btn-address").parent().parent().parent().parent().parent();
-            next_fs = current_fs.next();
-            $(".prev").css({ 'display': 'block' });
-            $('.card2').removeClass('show');
-            $('.boardroominfo').addClass('show');
-			var active = jQuery('.building-info #progressbar .active').length ;
-            if(active > 1){
-                addBoardroomInfo(); // 2
-            }
-            $("#progressbar li").eq($(".card2").index(next_fs)).addClass("active");
-
-            document.getElementById('list_id').value = data.id;
-            document.getElementById('listing_id').value = data.id;
-            timoutsubmit();
-            /* Tip Box Pop Up */
-            var indexbar = $('div .card2.show').index() ;
-            indexbar = indexbar + 1;
-            $('.building-info .content-form .tip-box .tips-content').hide();
-            $( ".building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
-            $( ".building-info .content-form .tip-container" ).show();
-            $('html, body').animate({scrollTop: '0px'}, 0);
-            /* / */
-        },
-        error: function (data) {
-            var errors = $.parseJSON(data.responseText);
-            console.log(errors.error);
-            $.each(errors.error, function (key, value) {
-                console.log(value);
-                $('.listing-alert-1').append('<li> Building Info: ' + value + '</li>');
-            });
-            $('.listing-alert-1').show().addClass('alert-danger').removeClass('alert-success');
-            $('html, body').animate({scrollTop: '0px'}, 0);
-
-        }
-    });
-}
 
 
 

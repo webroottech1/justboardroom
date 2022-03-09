@@ -2,6 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Addresses;
+use App\Models\Listing;
+
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +26,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('listing/listing_dashboard');
+
+        $listing = Listing::where('user_id',auth()->user()->id)->get();
+
+        return view('listing/listing-dashboard', compact('listing'));
     }
 }
