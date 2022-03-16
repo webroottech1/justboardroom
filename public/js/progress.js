@@ -1,27 +1,27 @@
 function progressbarclick(){
-    $('#progressbar .active').bind('click', function(){
+    $('#progressbar .active').on('click', function(){
         console.log('hii')
         jQuery('._1KJtL').remove()
         var indexbar = $('#progressbar .active').index(this) ;
         indexbar = indexbar + 1;
-        $('.building-info .content-form .card2').removeClass('show')
-        $( ".building-info .content-form .card2:nth-child(" + indexbar + ")" ).addClass('show');
+        $('.listing-building-info .content-form .card2').removeClass('show')
+        $( ".listing-building-info .content-form .card2:nth-child(" + indexbar + ")" ).addClass('show');
 
-        $('.building-info .content-form .tip-box .tips-content').hide();
-        $( ".building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
-        $( ".building-info .content-form .tip-container" ).show();
+        $('.listing-building-info .content-form .tip-box .tips-content').hide();
+        $( ".listing-building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
+        $( ".listing-building-info .content-form .tip-container" ).show();
     });
 }
 
-function defaultstepjump(){
+/* function defaultstepjump(){
     var lastsavestep = jQuery('.latest-step').text();
     var lastsavestatus = jQuery('.latest-status').text();
 
     if(lastsavestep == '' || lastsavestatus == 2){
         lastsavestep = 1;
     }
-    $('.building-info .content-form .card2').removeClass('show')
-    $( ".building-info .content-form .card2:nth-child(" + lastsavestep + ")" ).addClass('show');
+    $('.listing-building-info .content-form .card2').removeClass('show')
+    $( ".listing-building-info .content-form .card2:nth-child(" + lastsavestep + ")" ).addClass('show');
 
 
     if( lastsavestatus == 2){
@@ -30,7 +30,7 @@ function defaultstepjump(){
     for (i = 1; i <= lastsavestep; i++) {
         $("#progressbar .step0:nth-child(" + i + ")" ).addClass('active');
     }
-}
+} */
 
 $( document ).ajaxComplete(function() {
     progressbarclick();
@@ -40,7 +40,7 @@ $( document ).ajaxComplete(function() {
 $(document).ready(function () {
     //click and go back of form
     progressbarclick();
-    defaultstepjump();
+    //defaultstepjump();
     //end of form click functinality
 
     $("#address-error-bag").hide();
@@ -61,19 +61,19 @@ $(document).ready(function () {
 
     //step - 1
     $("#btn-address").click(function (event) {
-        listingjointsave();
+        //listingjointsave();
         /* Tip Box Pop Up */
         var indexbar = $('div .card2.show').index() ;
         indexbar = indexbar + 2;
-        $('.building-info .content-form .tip-box .tips-content').hide();
-        $( ".building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
-        $( ".building-info .content-form .tip-container" ).show();
+        $('.listing-building-info .content-form .tip-box .tips-content').hide();
+        $( ".listing-building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
+        $( ".listing-building-info .content-form .tip-container" ).show();
         /* / */
     });
 
     //step - 2
     $("#btn-bd-info").click(function (event) {
-        listingjointsave();
+        ////listingjointsave();
     });
 
     //step - 3
@@ -83,19 +83,19 @@ $(document).ready(function () {
 
     //step - 4
     $("#btn-bd-price").click(function (event) {
-        listingjointsave();
+        //listingjointsave();
         /* Tip Box Pop Up */
         var indexbar = $('div .card2.show').index() ;
         indexbar = indexbar + 1;
-        $('.building-info .content-form .tip-box .tips-content').hide();
-        $( ".building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
-        $( ".building-info .content-form .tip-container" ).show();
+        $('.listing-building-info .content-form .tip-box .tips-content').hide();
+        $( ".listing-building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
+        $( ".listing-building-info .content-form .tip-container" ).show();
         /* / */
     });
 
     $("#btn-bd-hosting-save-submit").click(function (event) {
         console.log('submit review cliecked');
-        listingjointsave();
+        //listingjointsave();
     });
 });
 
@@ -171,19 +171,19 @@ function addBoardroomInfo() {
             $('.card2').removeClass('show');
             $('.photoslisting').addClass("show");
 
-            var active = jQuery('.building-info #progressbar .active').length ;
+            var active = jQuery('.listing-building-info #progressbar .active').length ;
             if(active > 2){
                 $("#add_file").click();  // 3
             }
 
             $("#progressbar li").eq($(".card2").index(next_fs)).addClass("active");
-            timoutsubmit();
+           // timoutsubmit();
             /* Tip Box Pop Up */
                 var indexbar = $('div .card2.show').index() ;
                 indexbar = indexbar + 1;
-                $('.building-info .content-form .tip-box .tips-content').hide();
-                $( ".building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
-                $( ".building-info .content-form .tip-container" ).show();
+                $('.listing-building-info .content-form .tip-box .tips-content').hide();
+                $( ".listing-building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
+                $( ".listing-building-info .content-form .tip-container" ).show();
             /* / */
             $('html, body').animate({scrollTop: '0px'}, 0);
         },

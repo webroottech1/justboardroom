@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 use App\Models\Addresses;
+use App\Models\ListingAmenity;
 
 class Listing extends Model
 {
@@ -31,4 +32,35 @@ class Listing extends Model
     {
         return $this->hasOne(Addresses::class);
     }
+
+    public function amenities()
+    {
+        return $this->belongsToMany(ListingAmenity::class,'listing_amenities', 'listing_id', 'amenity_id');
+    }
+
+    public function pictures()
+    {
+        return $this->hasMany(ListingGallery::class);
+    }
+
+    public function calender()
+    {
+        return $this->hasOne(ListingCalendar::class);
+    }
+
+    public function rules()
+    {
+        return $this->belongsToMany(HostingRule::class);
+    }
+
+    public function capacity()
+    {
+        return $this->belongsTo(ListingCapacity::class);
+    }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
 }

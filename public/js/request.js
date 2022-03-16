@@ -21,16 +21,12 @@ $(document).ready(function () {
         }
     });
 
-
     $("#request-error-bag").hide();
-    $("#btn-bd-request").click(function (event) {
+    $("#btn-bd-request").on("click",function (event) {
         console.log('request button click');
         event.preventDefault();
-        var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-        var headers = {
-            "Access-Control-Allow-Origin": "*",
-            'Authorization': `Bearer ${cookieValue}`,
-        }
+        //var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
         var requestApprovalYes = jQuery('#approval-yes').is(':checked');
         var requestApprovalNo  = jQuery('#approval-no').is(':checked');
 
@@ -62,13 +58,14 @@ $(document).ready(function () {
         //         $(window).unbind('beforeunload');
         //     }, 1000);
         // }
-        var terms = $('#terms').val();
+        //var terms = $('#terms').val();
+        submitListingForReview();
+        //console.log(terms);
+        /* if(terms == 1){
 
-        if(terms == 1){
-            submitListingForReview();
         }else{
             $('#hosting-submit').modal('show');
-        }
+        } */
     });
 
 
@@ -89,65 +86,67 @@ $(document).ready(function () {
 });
 
 function submitListingForReview(){
-        var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-        var headers = {
-            "Access-Control-Allow-Origin": "*",
-            'Authorization': `Bearer ${cookieValue}`,
+    //var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    var headers = {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    };
+    var requestApprovalYes = jQuery('#approval-yes').is(':checked');
+    var requestApprovalNo  = jQuery('#approval-no').is(':checked');
+    $.ajax({
+        url: '/listing/add/request',
+        type: 'POST',
+        headers: headers,
+        data: {
+            list_id:$("#list_id").val(),
+            requestApprovalYes,
+            requestApprovalNo,
+            terms: $('#terms').val(),
+            type:'review'
+        },
+        dataType: 'json',
+        crossDomain: true,
+        timeout: 86400,
+        success: function (data) {
+
+            /* console.log(data);
+            return; */
+            $(window).unbind('beforeunload');
+            $('#hosting-submit').modal('hide');
+            $('#thank-you-listing').modal('show');
+
+            //timoutsubmit();
+            /* Tip Box Pop Up */
+            var indexbar = $('+v .card2.show').index() ;
+            indexbar = indexbar + 1;
+            $('.building-info .content-form .tip-box .tips-content').hide();
+            $( ".building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
+            $( ".building-info .content-form .tip-container" ).show();
+                //window.location.href = `/api/dashboard`;
+        },
+        error: function (data) {
+
+            var errors = $.parseJSON(data.responseText);
+
+        $('#request-info-errors').html('');
+
+        if (errors.error){
+
+            $.each(errors.error, function (key, value) {
+                console.log(value)
+                if(value != 'Your account is not validated.'){
+                    $('.listing-alert-7').append('<li> Request Booking: ' + value + '</li>');
+                } else {
+                    $('.listing-alert-7').append('<li> Request Booking: ' + value + '</li>');
+                    $('#error-account-verification').modal('show');
+                }
+            });
+
+            $('#hosting-submit').modal('hide');
         }
-        var requestApprovalYes = jQuery('#approval-yes').is(':checked');
-        var requestApprovalNo  = jQuery('#approval-no').is(':checked');
-        $.ajax({
-            url: '/api/listing/add/request',
-            type: 'POST',
-            headers: headers,
-            data: {
-                list_id:$("#list_id").val(),
-                requestApprovalYes,
-                requestApprovalNo,
-                terms: $('#terms').val(),
-                type:'review'
-            },
-            dataType: 'json',
-            crossDomain: true,
-            timeout: 86400,
-            success: function (data) {
-                $(window).unbind('beforeunload');
-                $('#hosting-submit').modal('hide');
-                $('#thank-you-listing').modal('show');
+        $('.listing-alert-7').show().addClass('alert-danger').removeClass('alert-success');
 
-                timoutsubmit();
-                /* Tip Box Pop Up */
-                var indexbar = $('+v .card2.show').index() ;
-                indexbar = indexbar + 1;
-                $('.building-info .content-form .tip-box .tips-content').hide();
-                $( ".building-info .content-form .tip-box .tips-content:nth-child(" + indexbar + ")" ).show();
-                $( ".building-info .content-form .tip-container" ).show();
-                 //window.location.href = `/api/dashboard`;
-            },
-            error: function (data) {
+        }
+    });
 
-                var errors = $.parseJSON(data.responseText);
-
-            $('#request-info-errors').html('');
-
-            if (errors.error){
-
-                $.each(errors.error, function (key, value) {
-                    console.log(value)
-                    if(value != 'Your account is not validated.'){
-                        $('.listing-alert-7').append('<li> Request Booking: ' + value + '</li>');
-                    } else {
-                        $('.listing-alert-7').append('<li> Request Booking: ' + value + '</li>');
-                        $('#error-account-verification').modal('show');
-                    }
-                });
-
-                $('#hosting-submit').modal('hide');
-            }
-            $('.listing-alert-7').show().addClass('alert-danger').removeClass('alert-success');
-
-            }
-        });
-
-    }
+}
 

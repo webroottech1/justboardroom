@@ -128,15 +128,14 @@ $(document).ready(function () {
         $(this).parent().find('#house_instruction_len').text(len + ' / ' + max +' CHARACTERS MAX');
     });
 
-    $("#btn-accept").click(function (event) {
+    $("#btn-accept").on('click',function (event) {
         event.preventDefault();
-        var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-        var headers = {
-            "Access-Control-Allow-Origin": "*",
-            'Authorization': `Bearer ${cookieValue}`,
-        }
+        //var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+        var headers =  {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        };
         $.ajax({
-            url: '/api/listing/submitForReview',
+            url: '/listing/submitForReview',
             type: 'POST',
             headers: headers,
             data: {
@@ -176,7 +175,7 @@ $(document).ready(function () {
         $('#error-account-verification').modal('hide');
     });
     $("#btn-thank-you-okay").click(function (event) {
-        window.location.href = `/api/dashboard`;
+        window.location.href = `/listing/dashboard`;
     });
 
     // $("#btn-decline-terms").click(function (event) {
@@ -264,22 +263,21 @@ $(".modal").on("hidden.bs.modal", function () {
 });
 
 function submitpost(){
-    var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-    var headers = {
-        "Access-Control-Allow-Origin": "*",
-        'Authorization': `Bearer ${cookieValue}`,
-    }
-    var advance = $('#hours-select').val();
+    //var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    var headers =  {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    };
+    var advance = $('#hours-select').find(':selected').val();
     var hosting_rule = $("textarea[id='hosting_rules']")
         .map(function () { return $(this).val(); }).get();
     var instruction = $('#house-instruction-input').val();
     $.ajax({
-        url: '/api/listing/submitForReview',
+        url: '/listing/submitForReview',
         type: 'POST',
         headers: headers,
         data: {
            list_id:$("#listing_id").val(),
-           advance_notice: advance,
+           advance_notice: 5,
            hosting_instructions:instruction,
            hosting_rule:hosting_rule,
            terms: $('#terms').val(),
@@ -289,6 +287,8 @@ function submitpost(){
         crossDomain: true,
         timeout: 86400,
         success: function (data) {
+            /* console.log(data);
+            return; */
             // $(window).unbind('beforeunload');
 
             // $('#hosting-submit').modal('hide');
@@ -311,7 +311,7 @@ function submitpost(){
             }
             $("#progressbar li").eq($(".card2").index(next_fs)).addClass("active");
 
-            timoutsubmit();
+            //timoutsubmit();
             /* Tip Box Pop Up */
             var indexbar = $('div .card2.show').index() ;
             indexbar = indexbar + 1;

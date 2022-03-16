@@ -102,7 +102,8 @@ $(document).ready(function () {
         }
     });
 
-    $(document).on('click','#addTime',function (e) {
+    $(document).on('click','#addTime',function () {
+       // alert('test');
         var day = $(this).attr("class");
         var test = '<div class="available-from-to showboardroomday"> '+
                     '   <div class="ml-2" style="width:35%;"><select id="'+day+'-from" class="day-from" value="09:00">'+
@@ -320,11 +321,10 @@ function addPriceInfo() {
     $(".listing-alert-4").html('');
     var hourly_rate = $("input[id='hourly-price-input']").val();
         var min_duration = $("#booking-duration").val();
-        var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-        var headers = {
-            "Access-Control-Allow-Origin": "*",
-            'Authorization': `Bearer ${cookieValue}`,
-        }
+        var headers =  {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        };
+
         var halfdaydiscount = [];
         var fulldaydiscount = [];
         var sales_tax = 0;
@@ -543,7 +543,7 @@ function addPriceInfo() {
          }
 
         $.ajax({
-            url: '/api/listing/add/price',
+            url: '/listing/add/price',
             type: 'POST',
             headers: headers,
             data: {
@@ -584,7 +584,7 @@ function addPriceInfo() {
                 }
                 $("#progressbar li").eq($(".card2").index(next_fs)).addClass("active");
 
-                timoutsubmit();
+               // timoutsubmit();
                 /* Tip Box Pop Up */
                 var indexbar = $('div .card2.show').index() ;
                 indexbar = indexbar + 1;

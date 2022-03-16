@@ -580,7 +580,7 @@ select:focus {
   position: absolute;
   left: 58px;
   top: 15px;
-  z-index: -1;
+  z-index: -1; 
 }
 /*
 #progressbar li:last-child:after {

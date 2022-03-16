@@ -1,12 +1,8 @@
-@extends('layouts.master') 
-@section('content') 
-<div class="listing-approval-setting py-5">
+<script type="text/javascript" src="{{ asset('js/request.js') }}"></script>
+
+<div class="card2 ml-2 requestlisting listing-approval-setting py-5 listingStepp" id="listing-step-6">
 	<div class="container">
-		<section class="listing-pg-title">
-			<h2 class="title">List your boardroom <span>w</span>ith us</h2>
-			<p class="sub-title">Start earning extra income <span>w</span>ith your boardroom</p>
-		</section>
-		<section class="listing-midprt pt-5"> 
+		<section class="listing-midprt pt-5">
 			<div class="row mx-auto">
 				<div class="col-md-9">
 					<div class="jbr-tips mb-4">
@@ -30,7 +26,7 @@
 									</div>
 								</div>
 								<div class="box box-2 d-flex">
-									<div class="bx"> 
+									<div class="bx">
 										<input type="radio" id="approval-no" name="approval-yes" class="form-check-input"/>
 										<label for="approval-no">No</label>
 									</div>
@@ -49,27 +45,7 @@
 							</div>
 					</div>
 				</div>
-				<div class="col-md-3">
-					<div class="right-listing position-relative">
-						<ul id="progressbar" class="progressbar text-center">
-							<li class="step0"></li>
-							<li class="step0"></li>
-							<li class="step0"></li>
-							<li class="step0"></li>
-							<li class="step0"></li>
-							<li class="step0 active"></li>
-						</ul>
-						<h6 class="mb-5 side-graph-step">Building Info</h6>
-						<h6 class="mb-5 side-graph-step">About Your Boardroom</h6>
-						<h6 class="mb-5 side-graph-step">Photos</h6>
-						<h6 class="mb-5 side-graph-step">Price &amp; Availability</h6>
-						<h6 class="mb-5 side-graph-step">Hosting Preference</h6>
-						<h6 class="mb-5 side-graph-step">Approval Settings</h6>
-					</div>
-				</div>
 			</div>
 		</section>
 	</div>
-</div>  	
-	
-@endsection 
+</div>
