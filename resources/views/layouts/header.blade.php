@@ -51,7 +51,7 @@
                             <a class="nav-link active" href="{{ url('/listing/dashboard') }}">Find a space</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/listing/buildinginfo') }}">List a space</a>
+                            <a class="nav-link" href="{{ url('/listing/create') }}">List a space</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">FAQ</a>

@@ -5,7 +5,8 @@
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
   <meta name="description" content="">
   <meta name="author" content="">
-  <meta name="csrf-token" content="{{ csrf_token() }}">
+
+
   <title>Just Boardrooms | Meetings when and where you want them</title>
 
   <!-- Bootstrap core CSS -->
@@ -40,9 +41,10 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/min/dropzone.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.9.0/fullcalendar.css" />
 
-
+{{-- Drop Zone Files --}}
   <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js"></script> -->
-  <script type="text/javascript" src="{{asset('/js/dropzone/dropzone.js')}}"></script>
+  <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/dropzone@5/dist/min/dropzone.min.css" type="text/css" />
 
 
 
@@ -92,10 +94,10 @@
 
 
 {{--   <script type="text/javascript" src="{{asset('js/list-now.js')}}"></script>
-<script type="text/javascript" src="{{asset('js/progress.js')}}"></script>
-  <script type="text/javascript" src="{{asset('js/addressAuto.js')}}"></script>
-  <script type="text/javascript" src="{{asset('js/priceavailability.js')}}"></script>
-  <script type="text/javascript" src="{{asset('js/sync-calandar.js')}}"></script>
+
+  <script type="text/javascript" src="{{asset('js/addressAuto.js')}}"></script> --}}
+
+ {{-- <script type="text/javascript" src="{{asset('js/sync-calandar.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/hosting.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/account.js')}}"></script>
   <script type="text/javascript" src="{{asset('js/inbox.js')}}"></script>

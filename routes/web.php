@@ -25,9 +25,9 @@ Route::get('/', function () {
 
 Route::middleware('auth')->group(function () {
 
-    Route::get('/listing/dashboard', function () {
-        return view('/listing/listing-dashboard');
-    })->name('listing-dashboard');
+    Route::get('/listing/dashboard', [HomeController::class, 'index'])->name('listing-dashboard');
+
+    Route::get('/listing/create',[ListingController::class, 'create'])->name('listing.create');
 
     Route::get('/listing/buildinginfo', function () {
         return view('/listing/listing-buildinginfo');
@@ -54,6 +54,11 @@ Route::middleware('auth')->group(function () {
     })->name('listing-price-availability');
 
     Route::post('/listing/add/address', [ListingController::class, 'SaveAddress'])->name('add-address');
+    Route::post('/listing/add/boardroominfo', [ListingController::class, 'SaveBoardroomInfo'])->name('add-boardroominfo');
+    Route::post('/listing/add/photos', [ListingController::class, 'SavePhotos'])->name('add-boardroomphotos');
+    Route::post('/listing/add/price', [ListingController::class, 'SavePrice'])->name('add-price');
+    Route::post('/listing/submitForReview', [ListingController::class, 'submitForReview'])->name('add-submitForReview');
+    Route::post('/listing/add/request', [ListingController::class, 'SaveRequest'])->name('add-request');
 
 
 
