@@ -60,7 +60,6 @@
                                             @if (isset($hosting_rule))
                                                 @foreach ($hosting_rule as $hostRules)
                                                     <div class="hosting-multi-field row pl-3 col-12" style="display:block;">
-
                                                         <textarea class="textarea-b-gray col-11" rows="1" name="rules[]"
                                                             id="hosting_rules" maxlength="500">{{$hostRules->hosting_rule}}</textarea>
                                                         <svg class="hosting-remove-field bi-type-bold"
@@ -73,8 +72,24 @@
                                                         <span class="sub-title smallp" id="hosting_rules_len"> 0 / 500
                                                             CHARACTERS MAX</span>
 
-                                                    </div>
+                                                        </div>
                                                 @endforeach
+                                            @else
+                                            <div class="hosting-multi-field row pl-3 col-12" style="display:none;">
+                                                <textarea class="textarea-b-gray col-11" rows="1" name="rules[]"
+                                                    id="hosting_rules" maxlength="500"></textarea>
+                                                <svg class="hosting-remove-field bi-type-bold"
+                                                    xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                                    fill="currentColor" viewBox="0 0 16 16">
+                                                    <path fill-rule="evenodd"
+                                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
+                                                    </path>
+                                                </svg>
+                                                <span class="sub-title smallp" id="hosting_rules_len"> 0 / 500
+                                                    CHARACTERS MAX</span>
+
+                                                </div>
+
                                             @endif
 
                                         </div>
