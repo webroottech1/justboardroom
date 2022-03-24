@@ -1,5 +1,5 @@
 <script type="text/javascript" src="{{ asset('js/priceavailability.js') }}"></script>
-
+{{-- {{dd($listing)}} --}}
 <div class="card2 ml-2 price-availability mt-3 listing-price-availability py-5 listingStepp" id="listing-step-4">
     <div class="container">
         <section class="listing-midprt pt-5">
@@ -53,7 +53,8 @@
                                     <div class="hours-select-wrapper d-flex">
                                         <span class="mx-3 me-1">$</span>
                                         <input class="input-bb-gray price" type="number" id="hourly-price-input" min="1"
-                                            max="9999" maxlength="4" name="hourly-price-input" value=""
+                                            max="9999" maxlength="4" name="hourly-price-input"
+                                            value="{{ isset($listing) ? $listing->per_hour_rate : '' }}"
                                             placeholder="________">
                                         <div class="hours-select-text px-2">
                                             <span> / Hour </span>
@@ -62,8 +63,12 @@
                                             <select id="rate-currency" name="rate-currency"
                                                 class="form-control form-select rate-currency select-bb-gray">
                                                 <option value="">Select Currency</option>
-                                                <option value="CAD">CAD</option>
-                                                <option value="USD">USD</option>
+                                                <option
+                                                    {{ isset($listing) && $listing->currency == 'CAD' ? 'selected' : '' }}
+                                                    value="CAD">CAD</option>
+                                                <option
+                                                    {{ isset($listing) && $listing->currency == 'USD' ? 'selected' : '' }}
+                                                    value="USD">USD</option>
                                             </select>
                                         </div>
                                     </div>
@@ -76,54 +81,12 @@
                                         minimium booking duration? </div>
                                     <div class="booking-input">
                                         <select id="booking-duration" class="booking-duration select-bb-gray ">
-                                            : ?&gt;
                                             <option value="0">Select</option>
-                                            : ?&gt;
-                                            <option value="1">1</option>
-                                            : ?&gt;
-                                            <option value="2">2</option>
-                                            : ?&gt;
-                                            <option value="3">3</option>
-                                            : ?&gt;
-                                            <option value="4">4</option>
-                                            : ?&gt;
-                                            <option value="5">5</option>
-                                            : ?&gt;
-                                            <option value="6">6</option>
-                                            : ?&gt;
-                                            <option value="7">7</option>
-                                            : ?&gt;
-                                            <option value="8">8</option>
-                                            : ?&gt;
-                                            <option value="9">9</option>
-                                            : ?&gt;
-                                            <option value="10">10</option>
-                                            : ?&gt;
-                                            <option value="11">11</option>
-                                            : ?&gt;
-                                            <option value="12">12</option>
-                                            : ?&gt;
-                                            <option value="13">13</option>
-                                            : ?&gt;
-                                            <option value="14">14</option>
-                                            : ?&gt;
-                                            <option value="15">15</option>
-                                            : ?&gt;
-                                            <option value="16">16</option>
-                                            : ?&gt;
-                                            <option value="17">17</option>
-                                            : ?&gt;
-                                            <option value="18">18</option>
-                                            : ?&gt;
-                                            <option value="19">19</option>
-                                            : ?&gt;
-                                            <option value="20">20</option>
-                                            : ?&gt;
-                                            <option value="21">21</option>
-                                            : ?&gt;
-                                            <option value="22">22</option>
-                                            : ?&gt;
-                                            <option value="23">23</option>
+                                            @for ($i = 1; $i <= 23; $i++)
+                                                <option
+                                                    {{ isset($listing) && $listing->min_hour == $i ? 'selected' : '' }}
+                                                    value={{ $i }}>{{ $i }}</option>
+                                            @endfor
                                         </select>
                                         <span>&nbsp;Hour</span>
                                     </div>
@@ -243,7 +206,7 @@
                                                 @php
                                                     $dayunavailableclass = 'hideboardroomday';
                                                     $dayavailableclass = 'showboardroomday';
-                                                    //$display = 'block';
+                                                    $display = 'block';
                                                 @endphp
                                             @endif
 
@@ -251,12 +214,15 @@
                                             @php
                                                 $df = '';
                                                 $dt = '';
-                                               /*  if (count($day_from) > 0 || count($day_to) > 0) {
-                                                    if (!empty($day_from[$day_val]) || !empty($day_to[$day_val])) {
-                                                        $df = json_encode($day_from[$day_val], true);
-                                                        $dt = json_encode($day_to[$day_val], true);
+                                                if (isset($day_from) && isset($day_to)) {
+                                                    if (count($day_from) > 0 || count($day_to) > 0) {
+                                                        if (!empty($day_from[$day_val]) || !empty($day_to[$day_val])) {
+                                                            $df = json_encode($day_from[$day_val], true);
+                                                            $dt = json_encode($day_to[$day_val], true);
+                                                        }
                                                     }
-                                                } */
+                                                }
+
                                             @endphp
 
                                             <div class="timeContainer-{{ $day_val }}" style="width:80%">
@@ -282,7 +248,8 @@
                                                                     @endforeach
                                                                 </select></div>
                                                             <div class="mx-2  from-to" style="width:10%">
-                                                                <span>to</span> </div>
+                                                                <span>to</span>
+                                                            </div>
                                                             <div class="" style=""><select
                                                                     id="{{ $day_val }}-to" class="day-to">
 
@@ -316,9 +283,10 @@
                                                     @endforeach
                                                 @endif
                                             </div>
+
                                             <div class="addTime">
                                                 <svg id="addTime" class="{{ $day_val }}"
-                                                    style="display:{{ $display }}" width="1.0em" height="1.0em"
+                                                    style="display:{{ $display }};" width="1.0em" height="1.0em"
                                                     viewBox="0 0 16 16" class="bi bi-plus-circle" fill="currentColor"
                                                     xmlns="http://www.w3.org/2000/svg">
                                                     <path fill-rule="evenodd"

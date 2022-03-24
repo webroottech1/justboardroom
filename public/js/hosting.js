@@ -128,7 +128,7 @@ $(document).ready(function () {
         $(this).parent().find('#house_instruction_len').text(len + ' / ' + max +' CHARACTERS MAX');
     });
 
-    $("#btn-accept").on('click',function (event) {
+    /* $("#btn-accept").on('click',function (event) {
         event.preventDefault();
         //var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
         var headers =  {
@@ -153,7 +153,7 @@ $(document).ready(function () {
             }
         });
 
-    });
+    }); */
 
 
 
@@ -267,17 +267,20 @@ function submitpost(){
     var headers =  {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     };
-    var advance = $('#hours-select').find(':selected').val();
-    var hosting_rule = $("textarea[id='hosting_rules']")
-        .map(function () { return $(this).val(); }).get();
+    var advance = $('#hours-duration').find(':selected').val();
+    //alert(advance);
+    var hosting_rule = $("textarea[name='rules[]']").map(function () { return $(this).val(); }).get();
+
+    /* console.log(hosting_rule);
+    return; */
     var instruction = $('#house-instruction-input').val();
     $.ajax({
         url: '/listing/submitForReview',
         type: 'POST',
         headers: headers,
         data: {
-           list_id:$("#listing_id").val(),
-           advance_notice: 5,
+           list_id:$("#list_id").val(),
+           advance_notice: advance,
            hosting_instructions:instruction,
            hosting_rule:hosting_rule,
            terms: $('#terms').val(),
@@ -300,8 +303,8 @@ function submitpost(){
             next_fs = current_fs.next();
             $(".prev").css({ 'display': 'block' });
 
-            $('.card2').removeClass("show");
-            $('.requestlisting').addClass('show');
+            $('.card2').hide();
+            $('#listing-step-6').show();
 
 
             var active = jQuery('.building-info #progressbar .active').length ;

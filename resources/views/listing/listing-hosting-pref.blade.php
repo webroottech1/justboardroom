@@ -1,7 +1,7 @@
 {{-- @extends('layouts.master')
 @section('content') --}}
 <script type="text/javascript" src="{{ asset('js/hosting.js') }}"></script>
-
+{{-- {{dd($hosting_rule)}} --}}
 <div class="card2 ml-2 hosting-arrangements listing-hosting-preference py-5 listingStepp" id="listing-step-5">
     <div class="container">
         <section class="listing-midprt pt-5">
@@ -36,54 +36,13 @@
                                         do you require for a guest to book your boardroom? </div>
                                     <div class="hours-select-wrapper">
                                         <select id="hours-duration" class="hours-duration select-bb-gray ">
-                                            : ?&gt;
+
                                             <option value="0">Select</option>
-                                            : ?&gt;
-                                            <option value="1">1</option>
-                                            : ?&gt;
-                                            <option value="2">2</option>
-                                            : ?&gt;
-                                            <option value="3">3</option>
-                                            : ?&gt;
-                                            <option value="4">4</option>
-                                            : ?&gt;
-                                            <option value="5">5</option>
-                                            : ?&gt;
-                                            <option value="6">6</option>
-                                            : ?&gt;
-                                            <option value="7">7</option>
-                                            : ?&gt;
-                                            <option value="8">8</option>
-                                            : ?&gt;
-                                            <option value="9">9</option>
-                                            : ?&gt;
-                                            <option value="10">10</option>
-                                            : ?&gt;
-                                            <option value="11">11</option>
-                                            : ?&gt;
-                                            <option value="12">12</option>
-                                            : ?&gt;
-                                            <option value="13">13</option>
-                                            : ?&gt;
-                                            <option value="14">14</option>
-                                            : ?&gt;
-                                            <option value="15">15</option>
-                                            : ?&gt;
-                                            <option value="16">16</option>
-                                            : ?&gt;
-                                            <option value="17">17</option>
-                                            : ?&gt;
-                                            <option value="18">18</option>
-                                            : ?&gt;
-                                            <option value="19">19</option>
-                                            : ?&gt;
-                                            <option value="20">20</option>
-                                            : ?&gt;
-                                            <option value="21">21</option>
-                                            : ?&gt;
-                                            <option value="22">22</option>
-                                            : ?&gt;
-                                            <option value="23">23</option>
+                                            @for ($i = 1; $i <= 23; $i++)
+                                                <option {{(isset($listing) && $listing->advance_notice == $i)?'selected':''}} value={{$i}}>{{$i}}</option>
+                                            @endfor
+
+
                                         </select>
                                         <span>&nbsp;Hour</span>
                                     </div>
@@ -98,21 +57,25 @@
                                 <div class="house-rules-input-wrapper">
                                     <div class="hosting-multi-field-wrapper col-12 p-0">
                                         <div class="hosting-multi-fields">
+                                            @if (isset($hosting_rule))
+                                                @foreach ($hosting_rule as $hostRules)
+                                                    <div class="hosting-multi-field row pl-3 col-12" style="display:block;">
 
-                                            <div class="hosting-multi-field row pl-3 col-12" style="display:none;">
-                                                <textarea class="textarea-b-gray col-11" rows="1" name="rules[]"
-                                                    id="hosting_rules" maxlength="500"></textarea>
-                                                <svg class="hosting-remove-field bi-type-bold"
-                                                    xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
-                                                    fill="currentColor" viewBox="0 0 16 16">
-                                                    <path fill-rule="evenodd"
-                                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
-                                                    </path>
-                                                </svg>
-                                                <span class="sub-title smallp" id="hosting_rules_len"> 0 / 500
-                                                    CHARACTERS MAX</span>
+                                                        <textarea class="textarea-b-gray col-11" rows="1" name="rules[]"
+                                                            id="hosting_rules" maxlength="500">{{$hostRules->hosting_rule}}</textarea>
+                                                        <svg class="hosting-remove-field bi-type-bold"
+                                                            xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em"
+                                                            fill="currentColor" viewBox="0 0 16 16">
+                                                            <path fill-rule="evenodd"
+                                                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z">
+                                                            </path>
+                                                        </svg>
+                                                        <span class="sub-title smallp" id="hosting_rules_len"> 0 / 500
+                                                            CHARACTERS MAX</span>
 
-                                            </div>
+                                                    </div>
+                                                @endforeach
+                                            @endif
 
                                         </div>
                                         <button type="button" class="hosting-add-field">Add</button>
@@ -127,7 +90,7 @@
                                 <p class="ha-txt-sub-header col-12 p-0 smallp">The following information will be sent to
                                     your Guest upon booking.</p>
                                 <textarea class="textarea-b-gray form-control py-2 px-3" id="house-instruction-input"
-                                    rows="4" cols="50" maxlength="500" placeholder="Enter Instructions"></textarea>
+                                    rows="4" cols="50" maxlength="500" placeholder="Enter Instructions"> {{(isset($listing) ? $listing->hosting_instruction:'')}} </textarea>
                                 <span class="sub-title smallp" id="house_instruction_len">0 / 500 CHARACTERS MAX</span>
                             </div>
                             <div class="form-group btn-submit">

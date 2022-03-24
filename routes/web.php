@@ -60,6 +60,8 @@ Route::middleware('auth')->group(function () {
     Route::post('/listing/submitForReview', [ListingController::class, 'submitForReview'])->name('add-submitForReview');
     Route::post('/listing/add/request', [ListingController::class, 'SaveRequest'])->name('add-request');
 
+    Route::get('/listing/edit/{id}', [ListingController::class, 'EditListing'])->name('edit-listing');
+    Route::post('/listing/get/photos', [ListingController::class, 'GetUploadedImages'])->name('get-photos');
 
 
 });

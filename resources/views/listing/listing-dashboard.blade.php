@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('content')
 
+{{-- {{dd($listing->)}} --}}
+
+
     <div class="listing_dashboard py-5">
         <div class="container">
             <div class="row">
@@ -13,7 +16,7 @@
                         <ul class="notificatiion">
                             <li><img src="{{ asset('imgs/info-button.png') }}" class="img-fluid"></li>
                             <li>
-                                <div class="listing-inbox-txt-top">You have <strong>3</strong> New Messages</div>
+                                <div class="listing-inbox-txt-top">You have <strong>0</strong> New Messages</div>
                                 <div class="listing-inbox-txt-btm"><a href="/api/inbox">
                                         << Check your Inbox</a>
                                 </div>
@@ -22,17 +25,17 @@
                         <ul class="boardroom-info">
                             <li>
                                 <ul>
-                                    <li class="nmbers"><strong>21</strong></li>
+                                    <li class="nmbers"><strong>0</strong></li>
                                     <li class="info">Active Boardroom</li>
                                 </ul>
                             </li>
                             <ul>
-                                <li class="nmbers"><strong>22</strong></li>
+                                <li class="nmbers"><strong>{{count($listing)}}</strong></li>
                                 <li class="info">Pending Boardroom</li>
                             </ul>
                             <li>
                                 <ul>
-                                    <li class="nmbers"><strong>83</strong></li>
+                                    <li class="nmbers"><strong>0</strong></li>
                                     <li class="info">Deactivated</li>
                                 </ul>
                             </li>
@@ -42,7 +45,7 @@
                             </ul>
                             <li>
                                 <ul>
-                                    <li class="nmbers"><strong>348</strong></li>
+                                    <li class="nmbers"><strong>{{count($listing)}}</strong></li>
                                     <li class="info">Total Bookings</li>
                                 </ul>
                             </li>
@@ -109,7 +112,7 @@
                                                     @foreach ($boardroom->pictures as $picture)
 
                                                         <div>
-                                                            <img src="{{ $picture->picture_path . '/' . $picture->picture }}"
+                                                            <img src="{{'/Images/' . $picture->picture }}"
                                                                 alt="" height="150" width="150">
                                                         </div>
 
@@ -132,9 +135,18 @@
                                                     </p>
                                                 </div>
                                                 <div class="list-capacity">
+                                                    @if ($boardroom->listing_capacity_id)
+                                                        @foreach ($ListingCapacity as $capacity)
+                                                            @if ($boardroom->listing_capacity_id == $capacity->id)
+                                                                <p>{{($capacity->display) ? $capacity->display.' People':'No Capacity Defined.'}}</p>
+                                                            @endif
+                                                        @endforeach
+                                                    @else
+                                                    <p>No Capacity Defined.</p>
+                                                    @endif
 
-                                                    <p> {{ isset($boardroom->capacity->display) ? $boardroom->capacity->display . ' People' : 'No capacity Defined' }}
-                                                    </p>
+                                                   {{--  <p> {{ isset($boardroom->capacity->display) ? $boardroom->capacity->display . ' People' : 'No capacity Defined' }}
+                                                    </p> --}}
 
                                                 </div>
                                                 <div class="host-name">
@@ -194,23 +206,23 @@
                                                                 <p>{{ round($boardroom->sales_tax) }}%</p>
                                                             </div>
                                                         @endif
-                                                        {{-- <div class="col-md-6 px-0">
+                                                        <div class="col-md-6 px-0">
                                                             <div class="list-action">
-                                                                <div class="approve">
+                                                                {{-- <div class="approve">
                                                                     <a href="#">Approve listing</a>
-                                                                </div>
+                                                                </div> --}}
                                                                 <ul class="settings">
                                                                     <li>
                                                                         <a
                                                                             href="{{ url('/') }}/listing/edit/{{ $boardroom->id }}">EDIT
                                                                             LISTING >></a>
                                                                     </li>
-                                                                    <li>
+                                                                   {{--  <li>
                                                                         <a href="#">EMAIL HOST</a>
-                                                                    </li>
+                                                                    </li> --}}
                                                                 </ul>
                                                             </div>
-                                                        </div> --}}
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>

@@ -195,7 +195,6 @@ $(document).ready(function () {
         if(urlToCheck == 'listing'){
             jQuery('.availcheckbox').not(":eq(-2)").not(":eq(-1)").prop('checked',true);
 
-
             var $AddTime= $('.availcheckbox').parent().siblings().children().find('#addtime').not(":eq(-2)").not(":eq(-1)");
             $('.availcheckbox').parent().siblings().children().find('#addtime').eq(-2).hide();
             $('.availcheckbox').parent().siblings().children().find('#addtime').eq(-1).hide();
@@ -560,7 +559,7 @@ function addPriceInfo() {
                 friVal:fri,
                 satVal:sat,
                 sunVal:sun,
-                list_id:$("#listing_id").val(),
+                list_id:$("#list_id").val(),
                 hst_check:jQuery("input[name='hst']:checked").val()
             },
             dataType: 'json',
@@ -574,14 +573,14 @@ function addPriceInfo() {
                 next_fs = current_fs.next();
                 $(".prev").css({ 'display': 'block' });
 
-                $('.card2').removeClass("show");
-                $('.hosting-arrangements').addClass('show');
+                $('.card2').hide();
+                $('#listing-step-5').show();
 
 
                 var active = jQuery('.building-info #progressbar .active').length ;
-                if(active > 4){
-                    submitForReview(); //5
-                }
+                /* if(active > 4){
+                    //submitForReview(); //5
+                } */
                 $("#progressbar li").eq($(".card2").index(next_fs)).addClass("active");
 
                // timoutsubmit();
