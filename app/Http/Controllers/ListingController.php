@@ -821,9 +821,6 @@ class ListingController extends Controller
         }
     }
 
-
-
-
 }
 
 

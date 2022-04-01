@@ -9,7 +9,7 @@
                 <div class="col-md-9">
                     <div class="jbr-tips mb-4">
                         <h4><span class="mr-3 orng-box"><img
-                                    src="https://justboardrooms.com/wp-content/themes/understrap/images/orange_box.png"></span>Just
+                                    src="https://justboardrooms.com/wp-content/themes/understrap/images/oran~ge_box.png"></span>Just
                             Boardrooms tips!</h4>
                         <p class="sub-title">In this section of your boardroom listing setup, feel free to include
                             any special instructions you want to give

@@ -5,6 +5,7 @@ use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\ListingCalendarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,8 +63,7 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/listing/edit/{id}', [ListingController::class, 'EditListing'])->name('edit-listing');
     Route::post('/listing/get/photos', [ListingController::class, 'GetUploadedImages'])->name('get-photos');
-
-
+    //Route::get('/listing/{id}/bookings', 'ListingCalendarController@getBooking');
 });
 
 Route::get('/the-why', function () {
