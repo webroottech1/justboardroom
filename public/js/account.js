@@ -43,7 +43,7 @@ function openProfilePayment(evt, cityName) {
         'Authorization': `Bearer ${cookieValue}`,
     }    
         $.ajax({
-        url: "/api/json/states",
+        url: "/json/states",
             headers: headers,
         }).done(function(response) {
             var $parseJSON = JSON.parse(response.data);
@@ -104,7 +104,7 @@ function openProfilePayment(evt, cityName) {
         $('#province').empty(); 
 
         $.ajax({
-        url: "/api/json/states",
+        url: "/json/states",
             headers: headers,
         }).done(function(response) {
             var $parseJSON = JSON.parse(response.data);
@@ -131,7 +131,7 @@ function openProfilePayment(evt, cityName) {
         $('#payment_province').empty(); 
 
         $.ajax({
-        url: "/api/json/states",
+        url: "/json/states",
             headers: headers,
         }).done(function(response) {
             var $parseJSON = JSON.parse(response.data);

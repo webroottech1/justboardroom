@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Models\Addresses;
+use App\Models\UserDetail;
 use App\Models\Listing;
 use App\Models\ListingAmenity;
 use App\Models\ListingUserDefinedAmenity;
@@ -13,6 +14,7 @@ use App\Models\ListingCalendar;
 use App\Models\HostingRule;
 use Illuminate\Support\Carbon;
 use Image;
+use Illuminate\Support\Facades\DB;
 
 class ListingController extends Controller
 {
@@ -645,6 +647,111 @@ class ListingController extends Controller
         ], 200);
     }
 
+    public function UserProfile(Request $request, $id){
+
+    
+        
+        $user = DB::table('users')->find($id);
+      //  $userDetail = DB::table('user_details')->find($id);
+
+        $userDetail = UserDetail::where('user_id', $id)->first();
+
+        // echo"<pre>";
+        // print_r($userDetail);
+        // die();
+        return view('user/user-profile' ,['users' => $user , 'user_detail' => $userDetail ]);
+
+
+    }
+    public function UserProfileUpdate(Request $request, $id){
+     
+        $messages = [
+            'firstname.required' => 'Profile : Please enter first name',     
+            'lastname.required' => 'Profile : Please enter Last name',
+            'phone.required' => 'Profile : Please enter Phone',
+            'province.required' => 'Profile : Please enter Province/State',
+            'city.required' => 'Profile : Please enter City',
+            'address.required' => 'Profile : Please enter Address',
+            'postal_code.required' => 'Profile : Please enter Postal Code or Zip Code',
+            'country.required' => 'Profile : Please enter Country',
+         
+            'payee.required' => 'Payment : Please enter Payee (Person or Business)',
+            'payment_province.required' => 'Payment : Please enter Province/State',
+            'payment_city.required' => 'Payment : Please enter City',
+            'payment_address.required' => 'Payment : Please enter Address',
+            'payment_postal_code.required' => 'Payment : Please enter Postal Code or Zip Code',
+            'payment_country.required' => 'Payment : Please enter Country',
+
+
+          ];
+        
+
+        $validator = Validator::make($request->all(), [
+
+            'firstname' => 'required|max:191',
+            'lastname' => 'required|max:191',
+            'city' => 'required|max:191',
+            'phone' => 'required|max:191',
+            'province' => 'required|max:191',
+            'postal_code' => 'required|max:191',
+            'country' => 'required|max:191',
+            'address' => 'required|max:191',
+            
+            'payee' => 'required|max:191',
+            'payment_province' => 'required|max:191',
+            'payment_city' => 'required|max:191',
+            'payment_address' => 'required|max:191',
+            'payment_postal_code' => 'required|max:191',
+            'payment_country' => 'required|max:191'
+            
+
+
+        ], $messages);
+
+        if($validator->fails()){
+
+            return response()->json([
+
+                'status'=> 400,
+                'errors'=>$validator->messages(),
+            ]);
+        } else {
+
+           
+             $user = UserDetail::where('user_id', $id)->first();
+            
+             if($user){  
+            // $result = UserDetail::create($request->all());
+            $result = UserDetail::where('user_id', $id)->update($request->all());
+                return response()->json([
+   
+                   'status'=> 200,
+                   'message'=>'User Updated Sucessfully',
+                ]);
+            
+            }else{
+                // dd($request);
+                DB::table('user_details')
+                ->insert($request->all());
+               // $result = UserDetail::create($request->all());
+               return response()->json([
+    
+                    'status'=> 200,
+                    'message'=>'User Updated Sucessfully',
+                 ]);
+                
+            }
+            }
+    
+            return response()->json([
+    
+                'status'=> 400,
+                'message'=>'User Not Found',
+             ]);
+     
+    
+    }
+
 }
 
 
@@ -676,3 +783,5 @@ class ListingController extends Controller
                     }
                 }
             } */
+
+         

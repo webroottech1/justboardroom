@@ -5,7 +5,7 @@
   <!-- <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
   <meta name="description" content="">
   <meta name="author" content="">
-
+  <meta name="csrf-token" content="{{ csrf_token() }}" />
 
   <title>Just Boardrooms | Meetings when and where you want them</title>
 
@@ -84,6 +84,7 @@
   <!-- Custom styles for this template -->
   <link href="{{ asset('css/one-page-wonder.min.css') }}" rel="stylesheet">
   <link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+  {{-- <link href="{{ asset('css/.css') }}" rel="stylesheet"> --}}
 <!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
@@ -91,7 +92,7 @@
   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   <!-- <script type="text/javascript" src="{{asset('js/external/axios.min.js')}}"></script> -->
 
-
+  <script type="text/javascript" src="{{asset('js/calendar.js')}}"></script>
 
 {{--   <script type="text/javascript" src="{{asset('js/list-now.js')}}"></script>
 

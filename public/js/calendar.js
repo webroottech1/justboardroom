@@ -230,13 +230,14 @@ if($('#calsyncno').is(':checked')) {
     var headers = {
         "Access-Control-Allow-Origin": "*",
         'Authorization': `Bearer ${cookieValue}`,
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
     }
 
     var listId = $('.listing-id').val();
     var guestId = $('.guest-id').val();
 
     $.ajax({
-        url: '/api/initiateMsgToGuest',
+        url: '/initiateMsgToGuest',
         type: 'POST',
         headers: headers,
         dataType: 'json',
@@ -250,7 +251,7 @@ if($('#calsyncno').is(':checked')) {
             console.log(response.receiver_id, response.listing_id);
             //window.location.href = `/api/inbox`;
             //return;
-            window.location.href = `/api/inbox?receiver_id=` + response.receiver_id + '&listing_id='+ response.listing_id;
+            window.location.href = `/inbox?receiver_id=` + response.receiver_id + '&listing_id='+ response.listing_id;
         },
         error: function (data) {
           var errors = $.parseJSON(data.responseText);
@@ -426,7 +427,7 @@ function reserveBoardroom(listId){
       }
 
       $.ajax({
-          url: '/api/listing/'+listId+ '/reserve/boardroom',
+          url: '/listing/'+listId+ '/reserve/boardroom',
           type: 'POST',
           headers: headers,
           data: {
@@ -480,7 +481,7 @@ function repeatWeekly(){
 function viewAllCalendar(){
   var events = [];
   $.ajax({
-      url: '/api/listing/bookings',
+      url: '/listing/bookings',
       type: 'GET',
 
       dataType: 'json',
@@ -526,7 +527,7 @@ function viewAllCalendar(){
 function bookingCalender(listId){
     var events = [];
     $.ajax({
-        url: '/api/listing/'+listId+'/bookings',
+        url: '/listing/'+listId+'/bookings',
         type: 'GET',
         dataType: 'json',
         crossDomain: true,
@@ -556,6 +557,7 @@ function bookingCalender(listId){
                 });
             })
             $('.list-item-'+listId).addClass('active');
+            console.log(data);
             var obj = JSON.parse(data.timeAvailability);
             $.each(obj, function(index, val){
               if(val != '0-0'){
@@ -598,7 +600,7 @@ function GenerateCalendar(events){
       eventTextColor: 'white',
       events: events,
       eventClick: function(info) {
-
+        console.log(events);
         $('.details.bname').text(info.building_name);
         $('.details.rname').text(info.room_name);
         $('.details.meeting-id').text(info.meeting_id);
@@ -635,7 +637,7 @@ function GenerateCalendar(events){
 
   function bookingDetails(listId){
     $.ajax({
-        url: '/api/listing/'+listId+'/booking/details',
+        url: '/listing/'+listId+'/booking/details',
         type: 'GET',
         dataType: 'json',
         crossDomain: true,

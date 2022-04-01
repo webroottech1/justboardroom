@@ -5,6 +5,9 @@ use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\ListingCalendarController;
+use App\Http\Controllers\InboxController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -59,8 +62,21 @@ Route::middleware('auth')->group(function () {
     Route::post('/listing/add/price', [ListingController::class, 'SavePrice'])->name('add-price');
     Route::post('/listing/submitForReview', [ListingController::class, 'submitForReview'])->name('add-submitForReview');
     Route::post('/listing/add/request', [ListingController::class, 'SaveRequest'])->name('add-request');
+   
+   
+    Route::get('/user/{id}/update', [ListingController::class, 'UserProfile'])->name('update-profile');
+    Route::put('/user/{id}/update', [ListingController::class, 'UserProfileUpdate']);
 
+    Route::get('/listing/calender',[ListingCalendarController::class, 'index'])->name('listingCalender');
 
+    Route::get('/listing/bookings', [ListingCalendarController::class, 'getAll']);
+
+    Route::get('/json/states',[HomeController::class, 'states'] )->name('json.states');
+
+    Route::get('/listing/{id}/bookings',[ListingCalendarController::class, 'getBooking']);
+    Route::post('/initiateMsgToGuest',[InboxController::class, 'initiateMsgToGuest']);
+
+    Route::get('/listing/{id}/booking/details',[ListingCalendarController::class, 'getBookingDetails']);
 
 });
 

@@ -1502,6 +1502,237 @@
     outline-width: 0 !important;
 }
 
+/* userprofile ********************************************************/ 
+.bg-content-grey {
+    background-color: #E5E5E5;
+}
+.mt-90 {
+    margin-top: 90px;
+}
+.mh-690 {
+    min-height: 100%;
+    /* min-height: 690px; */
+}
+.user-profile-wrapper {
+    min-height: 690px;
+    clear: both;
+    overflow: auto;
+    max-width: 1210px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-right: 20px;
+    padding-left: 20px;
+	display: flex;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+}
+.user-profile-wrapper .account-main {
+    width: 40%;
+}
+.user-profile-wrapper .profile-payment-settings-main {
+    width: 40%;
+    background-color: white;
+    padding: 25px;
+    border-radius: 8px;
+    margin-bottom: 25px;
+}
+.user-profile-wrapper .account-main .account-header {
+    max-width: 336px;
+    color: #686058;
+    font-size: 36px;
+    font-weight: bold;
+    text-align: center;
+    margin: auto;
+}
+.user-profile-wrapper .account-main .profile-pic {
+    margin: 12px auto 20px auto;
+    width: 140px;
+    height: 140px;
+    background-color: #FF7F40;
+    border-radius: 50%;
+    text-align: center;
+    border: 3px solid #FFAF93;
+}
+.user-profile-wrapper .account-main .profile-pic .profile-username {
+    font-size: 85px;
+    color: #FFFFFF;
+    width: 135px;
+    height: 135px;
+    font-weight: 500;
+}
+.user-profile-wrapper .account-main .up-add-update-photo {
+    font-size: 17px;
+    cursor: pointer;
+    text-align: center;
+    margin: auto;
+    width: 100px;
+}
+.profilepg label {
+    font-weight: 600;
+    color: #444444;
+}
+.profilepg  input, .profilepg  select {
+    padding: 11px;
+    border-radius: 0px;
+    box-sizing: border-box;
+    color: #000;
+    border: 1px solid #BDBDBD;
+    font-size: 16px;
+    letter-spacing: 1px;
+    height: 50px !important;
+}
+.profilepg .alert-danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+.profilepg .alert {
+    position: relative;
+    padding: 0.75rem 1.25rem;
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+}
+.profilepg .alert-success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+.user-profile-wrapper .account-main .email-pass-wrapper .account-textbox .email-text, .user-profile-wrapper .account-main .email-pass-wrapper .account-textbox .pwd-text {
+    font-size: 15px;
+}
+.user-profile-wrapper .account-main .email-pass-wrapper .account-textbox .input-changelink-wrapper {
+    display: flex;
+}     
+.user-profile-wrapper .account-main .email-pass-wrapper .account-textbox .input-changelink-wrapper input {
+    width: 275px;
+    height: 40px !important;
+    border-right: none;
+    background-color: white !important;
+}
+.user-profile-wrapper .account-main .email-pass-wrapper .account-textbox .input-changelink-wrapper .change-link {
+    color: #AAAAAA;
+    opacity: 1;
+    cursor: pointer;
+    border: 1px solid #BDBDBD;
+    background-color: white;
+    border-left: none;
+    padding-right: 5px;
+	line-height: 38px;
+}
+.user-profile-wrapper .account-main .email-pass-wrapper .edit-settings-link, .user-profile-wrapper .account-main .email-pass-wrapper .edit-account-info-link {
+    color: #444444;
+    font-size: 15px;
+    text-align: center;
+    cursor: pointer;
+}
+.user-profile-wrapper .profile-payment-settings-main .tab {
+    clear: both;
+    overflow: auto;
+}
+.user-profile-wrapper .profile-payment-settings-main .tab .tablinks {
+    cursor: pointer;
+    font-size: 25px;
+    color: #E5E5E5;
+}
+.user-profile-wrapper .profile-payment-settings-main .tab .profile-tab {
+    width: 80px;
+    float: left;
+    text-align: center;
+}
+.user-profile-wrapper .profile-payment-settings-main .tab .active {
+    border-bottom: 1px solid #FF671D;
+    color: #686058 !important;
+}
+.user-profile-wrapper .profile-payment-settings-main .tab .payment-tab {
+    width: 225px;
+    float: left;
+    text-align: center;
+}
+.user-profile-wrapper .profile-payment-settings-main .profile-main .profile-textbox {
+    padding-top: 20px;
+}
+.user-profile-wrapper .profile-payment-settings-main .profile-main .profile-textbox .profilelabel {
+    font-size: 14px;
+    color: #686058;
+	padding-bottom: 3px;
+}
+.company.profile-textbox input, .user-profile-wrapper .profile-payment-settings-main .profile-main .profile-textbox input {
+    height: 40px !important;
+    width: 90%;
+}
+.profilepg .title, .profilepg .sub-title {
+    color: #686058;
+}
+.user-profile-wrapper .profile-payment-settings-main .payment-main .mailing-lbl {
+    color: #686058;
+    font-size: 20px;
+}
+.user-profile-wrapper .profile-payment-settings-main .payment-main .address-chk {
+    display: flex;
+}
+.user-profile-wrapper .profile-payment-settings-main .payment-main .address-chk label {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 9px;
+    font-size: 17px;
+    color: #444444;
+}
+.user-profile-wrapper .profile-payment-settings-main .payment-main .payment-textbox .paymentlabel {
+    font-size: 14px;
+    color: #686058;
+	padding-bottom: 3px;
+}
+.user-profile-wrapper .profile-payment-settings-main .payment-main .payment-textbox input {
+    height: 40px !important;
+    width: 90%;
+}
+.payment-province.paymentlabel, .country.paymentlabel {
+    font-size: 14px;
+    color: #686058;
+    padding-top: 20px;
+}
+.profilepg select.profile {
+    margin-bottom: 0px;
+    height: 44px !important;
+    width: 90%;
+}
+.profilepg .requiredstar:after {
+    content: " *";
+    color: red;
+}
+.user-profile-wrapper .profile-payment-settings-main .setting-checkbox label {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-left: 9px;
+    font-size: 17px;
+    color: #444444;
+}
+.user-profile-wrapper .profile-payment-settings-main .required-text {
+    letter-spacing: 0px;
+    color: #FF671D;
+    font-size: 12px;
+    margin-bottom: 15px;
+    width: 100%;
+    padding-top: 20px;
+}
+.user-profile-wrapper .profile-payment-settings-main .btn-primary {
+    background-color: #A5A09B;
+    border-color: #A5A09B;
+}
+
+.user-profile-wrapper .profile-payment-settings-main .payment-main .payment-textbox {
+    padding-top: 20px;
+}
+.profilepg {
+    font-family: 'Roboto';
+}
+.profilepg .email-pass-wrapper {
+    width: 73%;
+    margin: auto;
+	margin-top: 2em;
+}
+
 
 /* new popopopopop */
 
