@@ -1348,7 +1348,7 @@
     align-content: flex-start;
 }
 .hosting-preference .hours-duration.select-bb-gray {
-    padding: 4px 11rem 4px 6px;
+    padding: 4px 11px 4px 6px;
 	width: calc( 94% - 40px);
 }
 .hosting-preference .smallp {

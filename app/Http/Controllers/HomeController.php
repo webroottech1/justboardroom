@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Addresses;
+use App\Models\Capacity;
 use App\Models\Listing;
 
 use Illuminate\Http\Request;
@@ -28,8 +29,11 @@ class HomeController extends Controller
     {
 
         $listing = Listing::where('user_id',auth()->user()->id)->get();
+        session()->forget('listingSpace');
 
-        return view('listing/listing-dashboard', compact('listing'));
+        $ListingCapacity = Capacity::all();
+
+        return view('listing/listing-dashboard', compact('listing','ListingCapacity'));
     }
 
     public function states(Request $request)

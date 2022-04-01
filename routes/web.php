@@ -6,7 +6,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ListingCalendarController;
-use App\Http\Controllers\InboxController;
 
 
 /*
@@ -73,10 +72,10 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/json/states',[HomeController::class, 'states'] )->name('json.states');
 
-    Route::get('/listing/{id}/bookings',[ListingCalendarController::class, 'getBooking']);
-    Route::post('/initiateMsgToGuest',[InboxController::class, 'initiateMsgToGuest']);
 
-    Route::get('/listing/{id}/booking/details',[ListingCalendarController::class, 'getBookingDetails']);
+    Route::get('/listing/edit/{id}', [ListingController::class, 'EditListing'])->name('edit-listing');
+    Route::post('/listing/get/photos', [ListingController::class, 'GetUploadedImages'])->name('get-photos');
+    //Route::get('/listing/{id}/bookings', 'ListingCalendarController@getBooking');
 
 });
 

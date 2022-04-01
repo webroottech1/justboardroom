@@ -8,6 +8,7 @@ use App\Models\Addresses;
 use App\Models\UserDetail;
 use App\Models\Listing;
 use App\Models\ListingAmenity;
+use App\Models\ListingCapacity;
 use App\Models\ListingUserDefinedAmenity;
 use App\Models\ListingGallery;
 use App\Models\ListingCalendar;
@@ -47,11 +48,18 @@ class ListingController extends Controller
         }
        //dd($days);
         $listing_type=1;
+        $listingStep = 1 ;
 
+        $listingData = '';
+
+        if(session('listingSpace') != null){
+            $listing_id = session('listingSpace');
+            $listingData = Listing::find($listing_id);
+            $listingStep = $listingData->step ;
+        }
         /* return view('Listing.create-address', compact('day_from','day_to','amenities_building', 'amenities_boardroom', 'amenities_tech', 'capacity', 'address', 'about', 'amenities', 'user_amen','days','clock','user','advance_notice','list_id')); */
 
-
-        return view('listing.create-listing',compact('days','clock'));
+        return view('listing.create-listing',compact('days','clock','listingStep','listingData'));
     }
 
     public function SaveAddress(Request $request){
@@ -91,6 +99,9 @@ class ListingController extends Controller
             $list_created->address_id = $address->id;
             $listingCreated = $list_created->save();
 
+            //Adding listing id to session
+            session(['listingSpace' => $listing->id]);
+
             if($listingCreated){
 
                 $response = [
@@ -107,7 +118,63 @@ class ListingController extends Controller
         }else{
 
             $listing = Listing::find($data['list_id']);
-            dd($listing);
+
+            if($listing->step < 1){
+                $listing->step = 1;
+                $listing->save();
+            }
+
+            $address = Addresses::where('id', $listing->address_id)->first();
+            //dd($address);
+            if($address) {
+                $address->formatted_address = $data['formatted_address'];
+                $shortAddress = explode(',',$data['formatted_address']);
+                $address->address = $shortAddress[0];
+                $address->postal_code = $data['postal_code'] ?? null;
+                $address->lat = $data['lat'] ?? null;
+                $address->lng = $data['lng'] ?? null;
+                $address->city = $data['country']??null;
+                $address->province = $data['province']??null;
+                $address->building_name = $data['building_name'] ?? null;
+                $address->intersection_a = $data['intersection_a'] ?? null;
+                $address->intersection_b = $data['intersection_b'] ?? null;
+                $address->update();
+                if (empty(session()->get('list_id'))) {
+                    session()->put('list_id', $data['list_id']);
+                } else {
+                    session()->forget('list_id');
+                    //$list_id = session()->get('list_id');
+                    session()->put('list_id', $data['list_id']);
+
+                }
+            } else {
+                $address = new Addresses();
+                $address->formatted_address = $data['formatted_address'];
+                $address->postal_code = $data['postal_code'];
+                $address->lat = $data['lat'];
+                $address->lng = $data['lng'];
+                $shortAddress = explode(',',$data['formatted_address']);
+                $address->address = $shortAddress[0];
+                $address->city = $data['country']??null;
+                $address->province = $data['province']??null;
+                $address->building_name = $data['building_name'] ?? null;
+                $address->intersection_a = $data['intersection_a'] ?? null;
+                $address->intersection_b = $data['intersection_b'] ?? null;
+                $address->save();
+                $current_listing = Listing::find($listing->id);
+                $listing->status = 0;
+                $current_listing->address_id = $address->id;
+                $current_listing->save();
+                $current_listing->address()->save($address);
+
+                session()->forget('list_id');
+                session()->put('list_id', $listing->id);
+            }
+            return response()->json([
+                'id' => $listing->id,
+                'message' => 'Address Updated Successfully',
+            ], 200);
+
         }
 
     }
@@ -131,6 +198,7 @@ class ListingController extends Controller
 
         $user = auth()->user();
         $data = $request->all();
+
         $listing = Listing::find($data['list_id']);
         //dd($listing);
         $listing->name = $data['name'];
@@ -262,7 +330,7 @@ class ListingController extends Controller
                                 $imageUpload->preview_img = true;
                                 $listing = Listing::find($request->input('list_id'));
 
-                                $listing->picture = $new_name;
+                                $listing->picture = $uniquename;
 
                                 $listing->save();
                             }
@@ -505,10 +573,10 @@ class ListingController extends Controller
 
 
         $listing = Listing::find($request->input('list_id'));
-
+        //dd($listing);
         $listing->per_hour_rate = $hourly_rate;
         $listing->price_per_hour= $hourly_rate;
-        $listing->min_hour      = $minimum_hours;
+        $listing->min_hour = $minimum_hours;
         $listing->per_day_rate  = $hourly_rate * 8;
         $listing->price_per_day	= $hourly_rate * 8;
         $listing->half_day_discount =  $halfDaySwitch;
@@ -550,7 +618,7 @@ class ListingController extends Controller
 
     public function submitForReview(Request $request){
         $data = $request->all();
-
+       // dd($data);
         if($request->input('type') == 'review' && $request->input('type') ){
 
             $listing = Listing::find($data['list_id']);
@@ -606,8 +674,8 @@ class ListingController extends Controller
     }
 
     public function SaveRequest(Request $request){
-        //dd($request);
-        $user= auth()->user();
+       // dd($request);
+        //$user= auth()->user();
 
         /*if(!$user->isVerified) {
             return response()->json(['error' => ['Your account is not validated.']], 401);
@@ -615,7 +683,7 @@ class ListingController extends Controller
         $listing = Listing::find($request->input('list_id'));
 
         $yes = $request->input('requestApprovalYes');
-        $no = $request->input('requestApprovalNo');
+        //$no = $request->input('requestApprovalNo');
 
 
         if($yes == 'true'){
@@ -647,6 +715,113 @@ class ListingController extends Controller
         ], 200);
     }
 
+
+    public function EditListing($ListId){
+
+
+
+        if ($ListId != 0) {
+
+            session(['listingSpace' => $ListId]);
+
+            $listing = Listing::find($ListId);
+            $listing_type = $listing->listing_type;
+            $address = Addresses::find($listing->address_id);
+            $listingStep = $listing->step;
+            $amenities = ListingAmenity::where('listing_id',$listing->id)->pluck('amenity_id');
+            //$user_amen = $listing->userAmenities()->pluck('user_amenities');
+        }
+        //dd($amenities);
+       // dd($listing->step);
+        $capacity = ListingCapacity::get()->pluck('display', 'id')->toArray();
+      //  $amenities_building = ListingAmenity::where('type', '=', 'building')->pluck('name', 'id')->toArray();
+       /*  $amenities_boardroom = ListingAmenity::where('type', '=', 'boardroom')->pluck('name', 'id')->toArray();
+        $amenities_tech = ListingAmenity::where('type', '=', 'technology')->pluck('name', 'id')->toArray(); */
+
+        $calender_days = ListingCalendar::where('listing_id',$ListId)->first();
+
+        $hosting_rule   = HostingRule::where('listing_id',$ListId)->get();
+
+        $advance_notice = array(1,2,3);
+        $list_id = $ListId;
+        $day_from = [];
+        $day_to = [];
+        if(isset($calender_days)){
+            $de_days   = json_decode($calender_days->days);
+            $daysArr = ['mon' => 'Monday', 'tue' => 'Tuesday',
+                        'wed' => 'Wednesday', 'thr' => 'Thursday',
+                        'fri' => 'Friday', 'sat' => 'Saturday',
+                        'sun' => 'Sunday'];
+
+            $day_from  = [];
+            $day_to  = [];
+
+            foreach($daysArr as $key => $val)
+            {
+                if(!empty($de_days->$key) ){
+                    $splitTime = explode(';', $de_days->$key);
+                    foreach($splitTime as $time) {
+                        $from = explode('-',$time)[0];
+                        $day_from[$val][] = $from;
+                        $to  = explode('-',$time)[1];
+                        $day_to[$val][]    = $to;
+                    }
+                }
+            }
+
+        }
+
+
+
+        $available = [];
+
+
+        $days = [
+            'mon' => 'Monday',
+            'tue' => 'Tuesday',
+            'wed' => 'Wednesday',
+            'thu' => 'Thursday',
+            'fri' => 'Friday',
+            'sat' => 'Saturday',
+            'sun' => 'Sunday',
+            ];
+
+        $clock = [];
+
+        $default = '19:00';
+        $interval = '+60 minutes';
+
+        $current = strtotime( '00:00' );
+        $end = strtotime( '23:00');
+
+        while( $current <= $end ) {
+            $time = date( 'H:i', $current );
+            $clock[$time] = date( 'h.i A', $current );
+            // $output .= "<option value=\"{$time}\"{$sel}>" . date( 'h.i A', $current ) .'</option>';
+            $current = strtotime( $interval, $current );
+        }
+
+        return view('Listing.create-listing', compact('capacity','amenities', 'address', 'listing','days','clock','day_from','day_to','hosting_rule','advance_notice','list_id','listing_type','listingStep'));
+
+
+    }
+
+    public function GetUploadedImages(Request $request){
+        //dd($ListId);
+
+        dd($request);
+
+        $data = $request->all();
+        $file_list = [];
+        if (isset($data['photo_list_id'])) {
+            $picture = ListingGallery::where('listing_id', '=', $data['photo_list_id'])->get();
+            foreach ($picture as $pic) {
+                $path = env('APP_URL');
+                $path .= '/thumbnail/' . $pic->picture_path . '/' . $pic->picture;
+                $fileList[] = ['name' => $pic->picture, 'path' => $path, 'size' => $pic->size, 'id' => $pic->id];
+            }
+            return $fileList;
+        }
     public function UserProfile(Request $request, $id){
 
     
@@ -748,8 +923,6 @@ class ListingController extends Controller
                 'status'=> 400,
                 'message'=>'User Not Found',
              ]);
-     
-    
     }
 
 }

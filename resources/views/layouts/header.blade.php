@@ -54,8 +54,9 @@
                             <a class="nav-link" href="{{ url('/listing/create') }}">List a space</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/listing/calender') }}">Calender</a>
-                        </li>
+
+                            <a class="nav-link" href="{{ url('/listing/calendar') }}">Calendar</a>
+                    </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">FAQ</a>
                         </li>

@@ -34,24 +34,30 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSuy4U3KFAhhK1gtshBsDJIiK
                         What is the address of your building? Make sure the pin in the map below is in the correct
                         location.
                     </label>
-                    <input type="text" class="input-bb-orange form-control pac-target-input" id="list-address" value=""
-                        placeholder="Enter Address" name="listA" onfocus="geolocate()" list="autocompleteOff"
-                        autocomplete="off">
+                    <input type="text"
+                        class="input-bb-orange form-control pac-target-input"
+                        id="list-address"
+                        value="{{ isset($listing->address) ? $listing->address->formatted_address : '' }}"
+                        placeholder="Enter Address"
+                        name="listA" onfocus="geolocate()"
+                        list="autocompleteOff"
+                        autocomplete="off"
+                    >
                 </div>
                 <div class="form-group mt-1 mb-1 addressmap">
                     <div id="map"></div>
                 </div>
-                <input id="postalcode" name="postal_code" type="hidden" value="">
+                <input id="postalcode" name="postal_code" type="hidden" value="{{ isset($listing->address) ? $listing->address->postal_code : '' }}">
                 <input id="country" name="country" type="hidden" value="">
-                <input id="province" name="province" type="hidden" value="">
-                <input id="lat" name="lat" type="hidden" value="">
-                <input id="lng" name="lng" type="hidden" value="">
-                <input id="list_id" name="list_id" type="hidden" value="0">
+                <input id="province" name="province" type="hidden" value="{{ isset($listing->address) ? $listing->address->province : '' }}">
+                <input id="lat" name="lat" type="hidden" value="{{ isset($listing->address) ? $listing->address->lat : '' }}">
+                <input id="lng" name="lng" type="hidden" value="{{ isset($listing->address) ? $listing->address->lng : '' }}">
+                <input id="list_id" name="list_id" type="hidden" value="{{session('listingSpace') != 0 ? session('listingSpace') : ''}}">
                 <div class="form-group px-0 mt-1 mb-1">
                     <label for="building-name">Enter your building name</label>
                     <span class="ifaplicable">(If Applicable)</span>
                     <input type="text" class="input-bb-gray form-control" id="building-name" placeholder="Enter name"
-                        name="buildingName" value="" maxlength="100">
+                        name="buildingName" value="{{ isset($listing->name) ? $listing->name : '' }}" maxlength="100">
                 </div>
                 <div class="form-group btn-submit">
                     <button type="button" class="btn save-btn listaddress-btn-notactive" id="btn-address"
@@ -139,7 +145,7 @@ src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCSuy4U3KFAhhK1gtshBsDJIiK
                 $('html, body').animate({
                     scrollTop: '0px'
                 }, 100);
-
+                onLoadStep(2);
             },
             error: function(data) {
                 var errors = $.parseJSON(data.responseText);

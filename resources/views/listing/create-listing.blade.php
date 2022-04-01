@@ -37,12 +37,12 @@
                     <div class="col-md-3">
                         <div class="right-listing position-relative">
                             <ul id="progressbar" class="progressbar text-center">
-                                <li class="step0 active" id="step-circle-1" onclick="changeListing(1)" ></li>
-                                <li class="step0" id="step-circle-2" onclick="changeListing(2)"></li>
-                                <li class="step0" id="step-circle-3" onclick="changeListing(3)"></li>
-                                <li class="step0" id="step-circle-4" onclick="changeListing(4)"></li>
-                                <li class="step0" id="step-circle-5" onclick="changeListing(5)"></li>
-                                <li class="step0" id="step-circle-6" onclick="changeListing(6)"></li>
+                                <li class="step0" id="step-circle-1" data-step="1"></li>
+                                <li class="step0" id="step-circle-2" data-step="2" ></li>
+                                <li class="step0" id="step-circle-3" data-step="3"></li>
+                                <li class="step0" id="step-circle-4" data-step="4" ></li>
+                                <li class="step0" id="step-circle-5" data-step="5"></li>
+                                <li class="step0" id="step-circle-6" data-step="6" ></li>
                             </ul>
                             <h6 class="mb-5 side-graph-step">Building Info</h6>
                             <h6 class="mb-5 side-graph-step">About Your Boardroom</h6>
@@ -294,12 +294,25 @@
     </div>
 
 <script>
+    $(document).ready(function(){
+        var savedStep = @json($listingStep);
+        onLoadStep(savedStep);
+    });
+
+    function onLoadStep(stepNo){
+        $('.step0').each(function(){
+            var stepp = $(this).data('step') ;
+            if(stepp <= 6){
+                $('#step-circle-'+stepp).addClass('active');
+                $('#step-circle-'+stepp).attr('onclick',"changeListing("+stepp+")")
+            }
+            changeListing(stepNo);
+        });
+    }
+
     function changeListing(stepNo){
         $('.listingStepp').hide();
         $('#listing-step-'+stepNo).show();
-
-        $('.step0').removeClass('active');
-        $('#step-circle-'+stepNo).addClass('active');
     }
 </script>
     <script type="text/javascript">
@@ -366,12 +379,13 @@
                 init: function () {
                     var submitButton = document.querySelector("#add_file");
                     var drop = this;
+                    var listingId = $("#list_id").val()
                     $.ajax({
-                        url: '/api/listing/get/photos',
+                        url: '{{url("/")}}/listing/get/photos',
                         type: 'post',
                         dataType: 'json',
                         data: {
-                           photo_list_id: $("#list_id").val()
+                           ListingId: listingId,
                         },
                         async: false,
                         success: function (response) {
@@ -438,7 +452,7 @@
                     };
                     file.acceptDimensions = done;
                  }
-            } */
+            }, */
 
             var myDropzone = new Dropzone("div#myDrop", {
                 paramName: "files", // The name that will be used to transfer the file
@@ -489,7 +503,7 @@
                 });
 
                 var details = JSON.stringify(files);
-                var list_id = $("#listing_id").val();
+                var list_id = $("#list_id").val();
                 formData.append('list_id', list_id);
                 formData.append('files', details);
                 formData.append('filenames', JSON.stringify(filenames));
