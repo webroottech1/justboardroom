@@ -11,7 +11,7 @@ use App\Models\ListingAmenity;
 use App\Models\ListingCapacity;
 use App\Models\ListingUserDefinedAmenity;
 use App\Models\ListingGallery;
-use App\Models\ListingCalendar;
+use App\Models\ListingCalender;
 use App\Models\HostingRule;
 use Illuminate\Support\Carbon;
 use Image;
@@ -592,12 +592,12 @@ class ListingController extends Controller
         }
 
         // check in listing calender if any entry for list id
-        $listing_calender = ListingCalendar::where('listing_id','=',$request->input('list_id'))->first();
+        $listing_calender = ListingCalender::where('listing_id','=',$request->input('list_id'))->first();
         if($listing_calender){
             $listing_calender->days = $days;
             $listing_calender->save();
         }else{
-            $calender = new ListingCalendar();
+            $calender = new ListingCalender();
             $calender->listing_id = $request->input('list_id');
             $calender->startDate = Carbon::now()->toDateTimeString();
             $calender->endDate = Carbon::now()->addYear(1);
@@ -738,7 +738,7 @@ class ListingController extends Controller
        /*  $amenities_boardroom = ListingAmenity::where('type', '=', 'boardroom')->pluck('name', 'id')->toArray();
         $amenities_tech = ListingAmenity::where('type', '=', 'technology')->pluck('name', 'id')->toArray(); */
 
-        $calender_days = ListingCalendar::where('listing_id',$ListId)->first();
+        $calender_days = ListingCalender::where('listing_id',$ListId)->first();
 
         $hosting_rule   = HostingRule::where('listing_id',$ListId)->get();
 
@@ -822,6 +822,7 @@ class ListingController extends Controller
             }
             return $fileList;
         }
+    }
     public function UserProfile(Request $request, $id){
 
     

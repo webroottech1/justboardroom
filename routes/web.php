@@ -77,6 +77,13 @@ Route::middleware('auth')->group(function () {
     Route::post('/listing/get/photos', [ListingController::class, 'GetUploadedImages'])->name('get-photos');
     //Route::get('/listing/{id}/bookings', 'ListingCalendarController@getBooking');
 
+    Route::get('/listing/{id}/bookings',[ListingCalendarController::class, 'getBooking']);
+    Route::post('/initiateMsgToGuest',[InboxController::class, 'initiateMsgToGuest']);
+
+    Route::get('/listing/{id}/booking/details',[ListingCalendarController::class, 'getBookingDetails']);
+
+
+
 });
 
 Route::get('/the-why', function () {
