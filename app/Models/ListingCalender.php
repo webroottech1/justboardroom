@@ -5,17 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ListingCalendar extends Model
+class ListingCalender extends Model
 {
-    use HasFactory;
+
+    /**
+     * The table associated with the model.
+     *
+     * @var string
+     */
+    protected $table = 'listing_calenders';
 
     protected $fillable = [
         'startDate',
-        'endDate',
+        'endDate    ',
         'days',
         'listing_id',
     ];
 
+    /**
+     * Get the user that owns the list.
+    */
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -25,4 +34,6 @@ class ListingCalendar extends Model
     {
     	return $this->belongsTo(Listing::class);
     }
+
+
 }

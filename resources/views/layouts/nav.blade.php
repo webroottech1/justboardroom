@@ -112,7 +112,7 @@
                                     @endif
                                 </button>
                                 <div class="dropdown-menu">
-                                <a class="nav-link header-account-link" href="/api/listing/{{Auth::user()->id}}/userProfile#profile">Account</a>
+                                <a class="nav-link header-account-link" href="/user/{{Auth::user()->id}}/update">Account</a>
                                     <!-- <a class="nav-link header-account-link" href="/api/listing/{{Auth::user()->id}}/userProfile#setting">Setting</a> -->
                                     <a class="nav-link" href="/api/reports">Report</a>
                                     <a class="nav-link" onclick="event.preventDefault();logout();">Log out</a>

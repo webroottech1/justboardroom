@@ -18,7 +18,7 @@
                             </a>
                             <div class="dropdown-menu">
                                 <a class="nav-link header-account-link"
-                                    href="/api/listing/173/userProfile#profile">Account</a>
+                                    href="/user/{{Auth::user()->id}}/update">Account</a>
                                 <!-- <a class="nav-link header-account-link" href="/api/listing/173/userProfile#setting">Setting</a> -->
                                 <a class="nav-link" href="/api/reports">Report</a>
                                 <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
@@ -54,6 +54,7 @@
                             <a class="nav-link" href="{{ url('/listing/create') }}">List a space</a>
                         </li>
                         <li class="nav-item">
+
                             <a class="nav-link" href="{{ url('/listing/calendar') }}">Calendar</a>
                     </li>
                         <li class="nav-item">

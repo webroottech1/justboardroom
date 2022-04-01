@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListingController;
 use App\Http\Controllers\ListingCalendarController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -60,10 +61,22 @@ Route::middleware('auth')->group(function () {
     Route::post('/listing/add/price', [ListingController::class, 'SavePrice'])->name('add-price');
     Route::post('/listing/submitForReview', [ListingController::class, 'submitForReview'])->name('add-submitForReview');
     Route::post('/listing/add/request', [ListingController::class, 'SaveRequest'])->name('add-request');
+   
+   
+    Route::get('/user/{id}/update', [ListingController::class, 'UserProfile'])->name('update-profile');
+    Route::put('/user/{id}/update', [ListingController::class, 'UserProfileUpdate']);
+
+    Route::get('/listing/calender',[ListingCalendarController::class, 'index'])->name('listingCalender');
+
+    Route::get('/listing/bookings', [ListingCalendarController::class, 'getAll']);
+
+    Route::get('/json/states',[HomeController::class, 'states'] )->name('json.states');
+
 
     Route::get('/listing/edit/{id}', [ListingController::class, 'EditListing'])->name('edit-listing');
     Route::post('/listing/get/photos', [ListingController::class, 'GetUploadedImages'])->name('get-photos');
     //Route::get('/listing/{id}/bookings', 'ListingCalendarController@getBooking');
+
 });
 
 Route::get('/the-why', function () {

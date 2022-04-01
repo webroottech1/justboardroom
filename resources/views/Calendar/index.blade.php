@@ -176,9 +176,10 @@
                 </span>
                 <div id="syncOption" class="row col-12">
                     @if(empty( Session::get('gcToken') )  && empty( Session::get('msToken') ))
-                     <a href="{{ URL::route('oauth') }}"  class="btn syncGCalendar mt-2 google-icon col-10" id="connect-gog-button"> Connect your Google</a> 
-                     <a href="{{ URL::route('outlook.login') }}"  class="btn syncGCalendar mt-2 outlook-icon col-10"> Connect your Outlook</a> 
-                    @else
+
+                     {{-- <a href="{{ URL::route('oauth') }}"  class="btn syncGCalendar mt-2 google-icon col-10" id="connect-gog-button"> Connect your Google</a> 
+                     <a href="{{ URL::route('outlook.login') }}"  class="btn syncGCalendar mt-2 outlook-icon col-10"> Connect your Outlook</a>  --}}
+     @else
                         @if(!empty( Session::get('gcToken') ) )
                           <a href="#"  class="btn resync google-icon mt-2 col-6" id="btn-re-sync-google"> Re-sync</a> 
                         @elseif(!empty( Session::get('msToken') ) )

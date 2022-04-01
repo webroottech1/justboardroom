@@ -35,4 +35,10 @@ class HomeController extends Controller
 
         return view('listing/listing-dashboard', compact('listing','ListingCapacity'));
     }
+
+    public function states(Request $request)
+    {
+        $data = file_get_contents(public_path('json/all_states.json') );
+        return response()->json(['data'=> $data]);
+    }
 }
