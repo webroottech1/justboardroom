@@ -52,7 +52,7 @@
                         </ul>
                         <ul class="view-report">
                             <li><img src="{{ asset('imgs/progress-diagram.png') }}" class="img-fluid"></li>
-                            <li><a href="#" class="report-link">View Report</a></li>
+                            <li><a href="{{ URL('/reports')}}" class="report-link">View Report</a></li>
                         </ul>
                     </section>
                 </div>
@@ -75,7 +75,7 @@
                                     placeholder="Search by Name" />
                             </div>
                             <div class="col-auto px-0">
-                                <label for="inputPassword6" class="col-form-label">SEARCH</label>
+                                <label for="inputPassword6" onclick="ajaxCallSaveRemark1()" class="col-form-label">SEARCH</label>
                             </div>
                         </div>
 
@@ -160,6 +160,8 @@
                                                     </p>
                                                 </div>
                                                 @php
+
+                                                // dd($boardroom);
                                                     $perHour = empty($boardroom->per_hour_rate) ? 0 : $boardroom->per_hour_rate;
                                                     $perHalfDay = empty($boardroom->per_day_rate) ? 0 : $boardroom->per_day_rate / 2;
                                                     $perDay = empty($boardroom->per_day_rate) ? 0 : $boardroom->per_day_rate;
@@ -237,4 +239,45 @@
         </div>
     </div>
     </div>
+
+                        <script>
+
+                    function ajaxCallSaveRemark1(){
+
+                  
+                    var cookieValue = document.cookie.replace(/(?:(?:^|.*;\s*)access_token\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+                    var headers = {
+                        "Access-Control-Allow-Origin": "*",
+                        'Authorization': `Bearer ${cookieValue}`,
+                    }
+
+                    var searchStatus = $(".form-select option:selected").val();
+                     var searchBar = $('#search').val();
+                     
+                    $.ajax({
+                        url: "/search",
+                        type: "GET",
+                        headers: headers,
+                        data:{
+                            searchBar:searchBar,
+                            searchStatus:searchStatus,
+                        },
+                        dataType: 'json',
+                        crossDomain: true,
+                        timeout: 86400,
+                        success: function(data){
+                            window.location.reload();
+                            console.log(data);
+                        },
+                        error: function(data){
+
+                            window.location.href = "search?searchBar="+searchBar+"&searchStatus="+searchStatus;
+                           
+                            console.log(data);
+                        } 	        
+                        });
+                    }
+
+
+                            </script>
 @endsection

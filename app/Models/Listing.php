@@ -45,7 +45,7 @@ class Listing extends Model
 
     public function calender()
     {
-        return $this->hasOne(ListingCalendar::class);
+        return $this->hasOne(ListingCalender::class);
     }
 
     public function rules()
@@ -68,4 +68,13 @@ class Listing extends Model
         return $this->hasMany(Booking::class);
     }
 
+    public function listing_capacity()
+    {
+        return $this->belongsTo(ListingCapacity::class);
+    }
+
+    public function listing_amenities()
+    {
+        return $this->belongsToMany(Amenity::class,'listing_amenities');
+    }
 }

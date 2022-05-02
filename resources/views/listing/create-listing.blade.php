@@ -2,7 +2,7 @@
 @section('content')
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     <script type="text/javascript" src="{{asset('js/progress.js')}}"></script>
-    <div class="listing-building-info py-5">
+    <div class=" py-5" id="classChange">
         <div class="container">
             <section class="listing-pg-title">
                 <h2 class="title">List your boardroom <span>w</span>ith us</h2>
@@ -301,8 +301,10 @@
 
     function onLoadStep(stepNo){
         $('.step0').each(function(){
+            var savedStep = @json(session('stepData'));
             var stepp = $(this).data('step') ;
-            if(stepp <= 6){
+            console.log(savedStep);
+            if(stepp <= savedStep){
                 $('#step-circle-'+stepp).addClass('active');
                 $('#step-circle-'+stepp).attr('onclick',"changeListing("+stepp+")")
             }
@@ -650,7 +652,9 @@
                             //$(current_fs).removeClass("show");
                             //$(next_fs).addClass("show");
                             $('.card2').removeClass("show");
-                            $('.price-availability').addClass("show");
+                            $('#listing-step-3').hide();
+
+                            $('.price-availability').show();
                             var active = jQuery('.building-info #progressbar .active').length;
                             if (active > 3) {
                                 addPriceInfo(); //4

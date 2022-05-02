@@ -5,7 +5,9 @@ use Illuminate\Auth\Middleware\Authenticate;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ListingController;
+use App\Http\Controllers\InboxController;
 use App\Http\Controllers\ListingCalendarController;
+use App\Http\Controllers\ReportsController;
 
 
 /*
@@ -76,6 +78,27 @@ Route::middleware('auth')->group(function () {
     Route::get('/listing/edit/{id}', [ListingController::class, 'EditListing'])->name('edit-listing');
     Route::post('/listing/get/photos', [ListingController::class, 'GetUploadedImages'])->name('get-photos');
     //Route::get('/listing/{id}/bookings', 'ListingCalendarController@getBooking');
+
+    Route::get('/listing/{id}/bookings',[ListingCalendarController::class, 'getBooking']);
+    Route::post('/initiateMsgToGuest',[InboxController::class, 'initiateMsgToGuest']);
+
+    Route::get('/listing/{id}/booking/details',[ListingCalendarController::class, 'getBookingDetails']);
+    Route::post('/initiateMsgToGuest',[InboxController::class, 'initiateMsgToGuest']);
+    Route::get('/inbox', [InboxController::class, 'index'])->name('inbox.index');
+    Route::post('/getMessage',[InboxController::class, 'getAllMessages']);
+    Route::post('/readMessage', [InboxController::class, 'readAllMessages']);
+    Route::post('/getMessagepartial', [InboxController::class, 'getMessagepartial']);
+    Route::post('/saveMessage',[InboxController::class, 'saveMessage']);
+    Route::post('/archivedMessage',[InboxController::class, 'archivedMessage']);
+
+    Route::get('/reports', [ReportsController::class, 'index']);
+    Route::get('/reportMonth', [ReportsController::class, 'month']);
+    Route::get('/listing/search', [ListingController::class, 'search']);
+
+
+
+
+
 
 });
 

@@ -52,7 +52,7 @@ $(document).ready(function () {
      $("#sendComment").on('submit',(function(e){
         e.preventDefault();
         ajaxCallSaveChat();
-
+        console.log("SUBMIT");
         var scrollHieght = $('.chat-wrapper').prop("scrollHeight");
         scrollHieght = scrollHieght * 2;
 
@@ -101,9 +101,10 @@ function msgreadstatus(chatId,myId){
     var headers = {
         "Access-Control-Allow-Origin": "*",
         'Authorization': `Bearer ${cookieValue}`,
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
     }
     $.ajax({
-        url: '/api/readMessage',
+        url: '/readMessage',
         type: 'POST',
         headers: headers,
         data: {
@@ -131,9 +132,10 @@ function loadChatConversation(chatId = null){
         var headers = {
             "Access-Control-Allow-Origin": "*",
             'Authorization': `Bearer ${cookieValue}`,
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
         }
         $.ajax({
-            url: '/api/getMessage',
+            url: '/getMessage',
             type: 'POST',
             headers: headers,
             data: {
@@ -171,12 +173,13 @@ function ajaxCallSaveChat(){
     var headers = {
         "Access-Control-Allow-Origin": "*",
         'Authorization': `Bearer ${cookieValue}`,
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
     }
     var chatId = $( ".inbox-left-wrapper" ).find('.active').find('.chatId').html();
     var receiverId = $( ".inbox-left-wrapper" ).find('.active').find('.receiverId').html();
 
     $.ajax({
-        url: "/api/saveMessage",
+        url: "/saveMessage",
         type: "POST",
         headers: headers,
         data:{
@@ -214,12 +217,14 @@ function archive(){
     var headers = {
         "Access-Control-Allow-Origin": "*",
         'Authorization': `Bearer ${cookieValue}`,
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+    
     }
     var chatId = $( ".inbox-left-wrapper" ).find('.active').find('.chatId').html();
     var receiverId = $( ".inbox-left-wrapper" ).find('.active').find('.receiverId').html();
 
     $.ajax({
-        url: "/api/archivedMessage",
+        url: "/archivedMessage",
         type: "POST",
         headers: headers,
         data:{
@@ -231,7 +236,9 @@ function archive(){
         timeout: 86400,
         success: function(data){
             if(data.archived == 1){
-                location.reload(); // then reload the page.(3)
+                window.location.href = "/inbox"; // then reload the page.(3)
+            }else if(data.archived == 0){
+                window.location.href = "/inbox";
             }
         },
         error: function(data){
@@ -252,10 +259,11 @@ function ajaxloadchatpartial(chatId, lastmsgIdold){
     var headers = {
         "Access-Control-Allow-Origin": "*",
         'Authorization': `Bearer ${cookieValue}`,
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
     }
 
     $.ajax({
-        url: '/api/getMessagepartial',
+        url: '/getMessagepartial',
         type: 'POST',
         headers: headers,
         data: {
@@ -289,10 +297,11 @@ function ajaxCallLoadChat(chatId){
     var headers = {
         "Access-Control-Allow-Origin": "*",
         'Authorization': `Bearer ${cookieValue}`,
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
     }
 
     $.ajax({
-        url: '/api/getMessage',
+        url: '/getMessage',
         type: 'POST',
         headers: headers,
         data: {

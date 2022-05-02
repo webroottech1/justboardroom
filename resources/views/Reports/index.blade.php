@@ -12,13 +12,13 @@
         <div class="rug-label">Monthly Views</div>
         <div class="rug-content-wrapper">
             <div class="rug-bdroom-select">
-                <div class="rug-bdroom mt-10">
+                <div class="rug-bdroom mtboardrooms-10" id="listBoardroom">
                         @foreach($boardrooms as $list)       
                             @if($bd_id == 'all')
-                                <div class="rug-bd bd-{{$list->id}}" id="{{$list->id}}"> <span>{{$list->name}}</span></div>
+                                <div class="rug-bd bd-{{$list->id}}" id="{{$list->id}}"> <span class="bdroomList">{{$list->name}}</span></div>
                             @else 
                                 @if ($bd_id == $list->id)
-                                <div class="rug-bd bd-{{$list->id}}" id="{{$list->id}}"> <span>{{$list->name}}</span></div>
+                                <div class="rug-bd bd-{{$list->id}}" id="{{$list->id}}"> <span class="bdroomList">{{$list->name}}</span></div>
                                 @endif
                             @endif
                         @endforeach                        
@@ -26,7 +26,7 @@
             <div class="sss">Total Views: {{$ttlview}}</div>
                 <div class="rug-select">
                         <select name="rug-sel" id="rug-sel">
-                            <option value="all">Show all</option>
+                            <option value="0">Show all</option>
                             @foreach($boardrooms as $list)             
                                 <option value="{{$list->id}}"  @if ($bd_id == $list->id) selected @endif  >{{$list->name}}</div>
                             @endforeach
@@ -75,10 +75,13 @@
                     </tr>
                 </thead>
                 
-                <tbody>
+                <tbody class="mbs-data-uniqueAjax">
                     @if($countRow)
-                        @foreach ($monthlyReportData as $jat => $val)
-                        @php                         
+                    
+                    @foreach ($monthlyReportData as $jat => $val)
+                        
+                        @php       
+
                             $tot = (10 / 100) * $val->totalPaidToHost;
                             $totalpaidtohost = $val->totalPaidToHost - $tot; 
                         @endphp
@@ -100,6 +103,13 @@
                         </td>    
                         </tr>
                         @endforeach
+                        @if($month == 6 || $month == 12)
+                        {{-- <tr class="mbs-data-uniqueAjax">
+
+                        </tr> --}}
+
+                        @endif
+
                     @else
                         <tr class="mbs-data-unique">
                             <td>You have no statements available</td>

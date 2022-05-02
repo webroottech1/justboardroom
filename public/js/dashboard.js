@@ -132,5 +132,9 @@ $(document).ready(function () {
         $('#terms').modal('show');
     }
 
+
+
+   
+
 });
 

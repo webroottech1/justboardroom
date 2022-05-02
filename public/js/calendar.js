@@ -235,6 +235,7 @@ if($('#calsyncno').is(':checked')) {
 
     var listId = $('.listing-id').val();
     var guestId = $('.guest-id').val();
+    var msg = $('.user-id').val();
 
     $.ajax({
         url: '/initiateMsgToGuest',
@@ -243,7 +244,9 @@ if($('#calsyncno').is(':checked')) {
         dataType: 'json',
         data: {
           listId:listId,
-          guestId:guestId
+          guestId:guestId,
+          msg:msg,
+         
         },
         crossDomain: true,
         timeout: 86400,
@@ -506,6 +509,7 @@ function viewAllCalendar(){
                   meeting_id: val['meeting_id'],
                   guest_name: val['guest_name'],
                   guest_id: val['guest_id'],
+                  ChatIntiated: val['ChatIntiated'],
                   listing_id: val['listing_id'],
                   booking_type: val['booking_type'],
                   payment_id:val['payment_id'],
@@ -550,6 +554,7 @@ function bookingCalender(listId){
                     meeting_id: val['meeting_id'],
                     guest_name: val['guest_name'],
                     guest_id: val['guest_id'],
+                    ChatIntiated: val['ChatIntiated'],
                     listing_id: val['listing_id'],
                     booking_type: val['booking_type'],
                     payment_id:val['payment_id'],
@@ -557,7 +562,7 @@ function bookingCalender(listId){
                 });
             })
             $('.list-item-'+listId).addClass('active');
-            console.log(data);
+            // console.log(data);
             var obj = JSON.parse(data.timeAvailability);
             $.each(obj, function(index, val){
               if(val != '0-0'){
@@ -600,7 +605,7 @@ function GenerateCalendar(events){
       eventTextColor: 'white',
       events: events,
       eventClick: function(info) {
-        console.log(events);
+        // console.log(info);
         $('.details.bname').text(info.building_name);
         $('.details.rname').text(info.room_name);
         $('.details.meeting-id').text(info.meeting_id);
@@ -608,9 +613,25 @@ function GenerateCalendar(events){
         $('.details.time').text(info.shour + " - " + info.ehour);
         $('.details.gname').text(info.guest_name);
         $('.guest-id').val(info.guest_id);
+        // $('.user-id').val(info.ChatIntiated);
         $('.listing-id').val(info.listing_id);
         $('.payment-id').val(info.payment_id);
         $('.booking-id').val(info.booking_id);
+     
+     console.log(info.ChatIntiated);
+        if(info.ChatIntiated == 0)
+      {
+        $('.msgGuest').show();
+        $('.Inbox').hide();
+        $('.user-id').show();
+      }else{
+
+        $('.msgGuest').hide();
+        $('.Inbox').show();
+        $('.user-id').hide(); 
+        
+      }        
+
         if(info.booking_type == 1){
             $('.btn-msg-guest').hide();
             $('.btn-req-approve').hide();
@@ -631,7 +652,7 @@ function GenerateCalendar(events){
         $('#reservation-details').modal('show');
       }
     });
-
+// console.log(info);
     window.scrollTo(0, 0);
   }
 

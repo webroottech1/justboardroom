@@ -17,7 +17,7 @@
 							<div class="chkbox-wrapper mb-4">
 								<div class="box box-1 d-flex">
 									<div class="bx">
-										<input type="radio" {{(isset($listing) && $listing->listing_type == 1) ? 'checked':''}} id="approval-yes" name="approval-yes" class="form-check-input"/>
+										<input type="radio" {{(isset($listing) && isset($listing->listing_type) == 1) ? 'checked':''}} id="approval-yes" name="approval-yes" class="form-check-input"/>
 										<label for="approval-yes">Yes</label>
 									</div>
 
@@ -27,7 +27,7 @@
 								</div>
 								<div class="box box-2 d-flex">
 									<div class="bx">
-										<input type="radio" {{(isset($listing) && $listing->listing_type == 0) ? 'checked':''}} id="approval-no" name="approval-yes" class="form-check-input"/>
+										<input type="radio" {{(isset($listing) && isset($listing->listing_type) == 0) ? 'checked':''}} id="approval-no" name="approval-yes" class="form-check-input"/>
 										<label for="approval-no">No</label>
 									</div>
 

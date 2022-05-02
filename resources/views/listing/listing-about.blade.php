@@ -1,4 +1,5 @@
 {{-- {{dd($listing)}} --}}
+<div class="listing-about-br">
 <div class="card2 ml-2 content-form boardroominfo listingStepp" id="listing-step-2">
     <div class="jbr-tips mb-4" >
         <h4><span class="mr-3 orng-box"><img
@@ -47,28 +48,28 @@
                     <div class="col-12 row">
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(2))?'checked':''}} class="form-check-input custom-control-input"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null &&  $amenities->contains(2))?'checked':''}} class="form-check-input custom-control-input"
                                     name="building-check" id="bd-2"  value="2" />
                                 <label class="custom-control-label" for="bd-2">Air Conditioning</label>
-                            </div>
+                            </div
                         </div>
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(4))?'checked':''}} class="form-check-input custom-control-input"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(4) )?'checked':''}} class="form-check-input custom-control-input"
                                     name="building-check" id="bd-4" value="4" />
                                 <label class="custom-control-label" for="bd-4">Parking</label>
                             </div>
                         </div>
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(5))?'checked':''}} class="form-check-input custom-control-input"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(5))?'checked':''}} class="form-check-input custom-control-input"
                                     name="building-check" id="bd-5" value="5" />
                                 <label class="custom-control-label" for="bd-5">Reception</label>
                             </div>
                         </div>
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(8))?'checked':''}} class="form-check-input custom-control-input"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(8))?'checked':''}} class="form-check-input custom-control-input"
                                     name="building-check" id="bd-8" value="8" />
                                 <label class="custom-control-label" for="bd-8">Washroom</label>
                             </div>
@@ -80,35 +81,35 @@
                     <div class="col-12 row">
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(1))?'checked':''}} class="form-check-input custom-control-input"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(1))?'checked':''}} class="form-check-input custom-control-input"
                                     name="boardroom-check" id="board-1" value="1" />
                                 <label class="custom-control-label" for="board-1">Accessibility Friendly</label>
                             </div>
                         </div>
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(3))?'checked':''}} class="form-check-input custom-control-input"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(3))?'checked':''}} class="form-check-input custom-control-input"
                                     name="boardroom-check" id="board-3" value="3" />
                                 <label class="custom-control-label" for="board-3">Breakout Space</label>
                             </div>
                         </div>
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(9))?'checked':''}} class="form-check-input custom-control-input"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(9))?'checked':''}} class="form-check-input custom-control-input"
                                     name="boardroom-check" id="board-9" value="9" />
                                 <label class="custom-control-label" for="board-9">Whiteboard</label>
                             </div>
                         </div>
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(12))?'checked':''}} class="form-check-input custom-control-input"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(12))?'checked':''}} class="form-check-input custom-control-input"
                                     name="boardroom-check" id="board-12" value="12" />
                                 <label class="custom-control-label" for="board-12">Water</label>
                             </div>
                         </div>
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(13))?'checked':''}} class="form-check-input custom-control-input"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(13))?'checked':''}} class="form-check-input custom-control-input"
                                     name="boardroom-check" id="board-13" value="13" />
                                 <label class="custom-control-label" for="board-13">Tea / Coffee</label>
                             </div>
@@ -121,28 +122,28 @@
                     <div class="col-12 row">
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(6))?'checked':''}} class="form-check-input custom-control-input" name="tech-check"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(6))?'checked':''}} class="form-check-input custom-control-input" name="tech-check"
                                     id="tech-6" value="6" />
                                 <label class="custom-control-label" for="tech-6">Teleconference</label>
                             </div>
                         </div>
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(7))?'checked':''}} class="form-check-input custom-control-input" name="tech-check"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(7))?'checked':''}} class="form-check-input custom-control-input" name="tech-check"
                                     id="tech-7" value="7" />
                                 <label class="custom-control-label" for="tech-7">Flatscreen TV</label>
                             </div>
                         </div>
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(10))?'checked':''}} class="form-check-input custom-control-input" name="tech-check"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(10))?'checked':''}} class="form-check-input custom-control-input" name="tech-check"
                                     id="tech-10" value="10" />
                                 <label class="custom-control-label" for="tech-10">Wi-Fi</label>
                             </div>
                         </div>
                         <div class="col-6 p-0">
                             <div class="custom-control custom-checkbox custom-control-inline">
-                                <input type="checkbox" {{(isset($amenities) && $amenities->contains(11))?'checked':''}} class="form-check-input custom-control-input" name="tech-check"
+                                <input type="checkbox" {{(isset($amenities) && $amenities != null && $amenities->contains(11))?'checked':''}} class="form-check-input custom-control-input" name="tech-check"
                                     id="tech-11" value="11" />
                                 <label class="custom-control-label" for="tech-11">Projector</label>
                             </div>
@@ -183,7 +184,7 @@
         </form>
     </div>
 </div>
-
+</div>
 <script>
     function addBoardroomInfo() {
         $(".listing-alert-2").html('');

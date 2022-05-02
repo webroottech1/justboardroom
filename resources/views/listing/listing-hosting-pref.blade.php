@@ -39,7 +39,7 @@
 
                                             <option value="0">Select</option>
                                             @for ($i = 1; $i <= 23; $i++)
-                                                <option {{(isset($listing) && $listing->advance_notice == $i)?'selected':''}} value={{$i}}>{{$i}}</option>
+                                                <option {{(isset($listing) && isset($listing->advance_notice)  && $listing->advance_notice == $i)?'selected':''}} value={{$i}}>{{$i}}</option>
                                             @endfor
 
 
@@ -105,7 +105,7 @@
                                 <p class="ha-txt-sub-header col-12 p-0 smallp">The following information will be sent to
                                     your Guest upon booking.</p>
                                 <textarea class="textarea-b-gray form-control py-2 px-3" id="house-instruction-input"
-                                    rows="4" cols="50" maxlength="500" placeholder="Enter Instructions"> {{(isset($listing) ? $listing->hosting_instruction:'')}} </textarea>
+                                    rows="4" cols="50" maxlength="500" placeholder="Enter Instructions"> {{(isset($listing) ? isset($listing->hosting_instruction):'')}} </textarea>
                                 <span class="sub-title smallp" id="house_instruction_len">0 / 500 CHARACTERS MAX</span>
                             </div>
                             <div class="form-group btn-submit">

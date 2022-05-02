@@ -7,11 +7,12 @@ use Illuminate\Support\Facades\Validator;
 use App\Models\Addresses;
 use App\Models\UserDetail;
 use App\Models\Listing;
+use App\Models\Capacity;
 use App\Models\ListingAmenity;
 use App\Models\ListingCapacity;
 use App\Models\ListingUserDefinedAmenity;
 use App\Models\ListingGallery;
-use App\Models\ListingCalendar;
+use App\Models\ListingCalender;
 use App\Models\HostingRule;
 use Illuminate\Support\Carbon;
 use Image;
@@ -46,20 +47,25 @@ class ListingController extends Controller
             // $output .= "<option value=\"{$time}\"{$sel}>" . date( 'h.i A', $current ) .'</option>';
             $current = strtotime( $interval, $current );
         }
-       //dd($days);
+  
         $listing_type=1;
         $listingStep = 1 ;
 
-        $listingData = '';
+        $listing = '';
+        $amenities = '';
 
         if(session('listingSpace') != null){
             $listing_id = session('listingSpace');
-            $listingData = Listing::find($listing_id);
-            $listingStep = $listingData->step ;
+            $listing = Listing::find($listing_id);
+            $amenities = ListingAmenity::where('listing_id',$listing->id)->pluck('amenity_id');
+            $listingStep = $listing->step ;
         }
+
+        
+            //  dd(session('stepData'));
         /* return view('Listing.create-address', compact('day_from','day_to','amenities_building', 'amenities_boardroom', 'amenities_tech', 'capacity', 'address', 'about', 'amenities', 'user_amen','days','clock','user','advance_notice','list_id')); */
 
-        return view('listing.create-listing',compact('days','clock','listingStep','listingData'));
+        return view('listing.create-listing',compact('days','clock','listingStep','listing', 'amenities'));
     }
 
     public function SaveAddress(Request $request){
@@ -98,12 +104,16 @@ class ListingController extends Controller
             $list_created = Listing::find($listing->id);
             $list_created->address_id = $address->id;
             $listingCreated = $list_created->save();
-
+            
             //Adding listing id to session
+
+           
             session(['listingSpace' => $listing->id]);
+            session(['stepData' => $listing->step]);
 
             if($listingCreated){
 
+               
                 $response = [
                     'id' =>$listing->id,
                     'status' => 1,
@@ -287,6 +297,7 @@ class ListingController extends Controller
                     $listing->step = 3;
                 }
                 $listing->save();
+                session(['stepData' => $listing->step]);
             } else {
                 if(isset($images)){
                     foreach ($images as $k => $val) {
@@ -343,6 +354,7 @@ class ListingController extends Controller
 
                             $listing->save();
                             $imageUpload->save();
+                            
                         }
 
                     }
@@ -592,12 +604,12 @@ class ListingController extends Controller
         }
 
         // check in listing calender if any entry for list id
-        $listing_calender = ListingCalendar::where('listing_id','=',$request->input('list_id'))->first();
+        $listing_calender = ListingCalender::where('listing_id','=',$request->input('list_id'))->first();
         if($listing_calender){
             $listing_calender->days = $days;
             $listing_calender->save();
         }else{
-            $calender = new ListingCalendar();
+            $calender = new ListingCalender();
             $calender->listing_id = $request->input('list_id');
             $calender->startDate = Carbon::now()->toDateTimeString();
             $calender->endDate = Carbon::now()->addYear(1);
@@ -611,6 +623,7 @@ class ListingController extends Controller
         }
 
         $listing->save();
+        session(['stepData' => $listing->step]);
 
         return response()->json(['msg' => 'Listing Calender added Sucessfully'], 200);
 
@@ -709,6 +722,7 @@ class ListingController extends Controller
         }
 
         $listing->save();
+        session(['stepData' => $listing->step]);
 
         return response()->json([
             'message' => 'Listing Request saved Successfully'
@@ -738,7 +752,7 @@ class ListingController extends Controller
        /*  $amenities_boardroom = ListingAmenity::where('type', '=', 'boardroom')->pluck('name', 'id')->toArray();
         $amenities_tech = ListingAmenity::where('type', '=', 'technology')->pluck('name', 'id')->toArray(); */
 
-        $calender_days = ListingCalendar::where('listing_id',$ListId)->first();
+        $calender_days = ListingCalender::where('listing_id',$ListId)->first();
 
         $hosting_rule   = HostingRule::where('listing_id',$ListId)->get();
 
@@ -800,6 +814,7 @@ class ListingController extends Controller
             // $output .= "<option value=\"{$time}\"{$sel}>" . date( 'h.i A', $current ) .'</option>';
             $current = strtotime( $interval, $current );
         }
+       
 
         return view('Listing.create-listing', compact('capacity','amenities', 'address', 'listing','days','clock','day_from','day_to','hosting_rule','advance_notice','list_id','listing_type','listingStep'));
 
@@ -822,6 +837,7 @@ class ListingController extends Controller
             }
             return $fileList;
         }
+    }
     public function UserProfile(Request $request, $id){
 
     
@@ -923,6 +939,41 @@ class ListingController extends Controller
                 'status'=> 400,
                 'message'=>'User Not Found',
              ]);
+    }
+
+
+    public function search(Request $request){
+
+    
+        
+       
+    //    dd($request->searchStatus);
+        // $user = DB::table('users')->find($id);
+
+        $listing = Listing::where('name', 'LIKE','%'.$request->searchBar.'%')
+        ->orwhere('status',$request->searchStatus)
+        ->get();
+        // dd($listing);
+
+        // dd($listing,$request->searchBar);
+
+      //  $userDetail = DB::table('user_details')->find($id);s
+    //   $listing = Listing::where('user_id',auth()->user()->id)->get();
+    //   session()->forget('listingSpace');
+
+      $ListingCapacity = Capacity::all();
+    
+    //   return response()->json([
+    
+    //     'status'=> 200,
+    //     'listing'=> $listing,
+    //     'ListingCapacity'=> $ListingCapacity,
+    //  ]);
+      
+      
+      return view('listing.listing-dashboard' ,compact('listing','ListingCapacity') );
+
+
     }
 
 }

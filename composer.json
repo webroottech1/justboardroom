@@ -13,7 +13,10 @@
         "laravel/sanctum": "^2.14",
         "laravel/tinker": "^2.7",
         "laravel/ui": "^3.4",
-        "nesbot/carbon": "^2.57"
+        "nesbot/carbon": "^2.57",
+        "symfony/http-client": "^6.0",
+        "symfony/mailgun-mailer": "^6.0",
+        "symfony/postmark-mailer": "^6.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

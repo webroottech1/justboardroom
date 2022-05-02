@@ -17,7 +17,10 @@ return new class extends Migration
             $table->bigIncrements('id');
             $table->integer('created_by');
             $table->integer('receiver');
+            $table->timestamp('timestamp');
             $table->integer('listing_id');
+            $table->integer('read_check');
+            $table->integer('archived');
             $table->timestamps();
         });
     }

@@ -213,15 +213,35 @@ $(document).ready(function () {
 
     var availexist = jQuery('.availcheckbox').length;
     if(availexist){
+    //    / onload($(this).parent().siblings().find('.unavailable-from-to').show());
+        // $(function() {
+
+        //     console.log($('.unavailable-from-to').click());
+           
+        //     var status =  $(this).is(':checked');
+           
+            
+        //     $('.unavailable-from-to').show();
+        //     $('.addTime').hide();
+         
+            
+
+        //   });
+
+        //   $("#dayavail_priceavail").click(function(){
+        //     $(".unavailable-from-to").hide();
+        //     $(this).parent().parent().find('.addTime').show();
+        //   });
         var $daysavail = jQuery('.availcheckbox');
         $daysavail.on('change',function() {
             var status =  $(this).is(':checked');
             //alert(status);
             var url = window.location.href.split('/')[4];
-            //alert(url);
+            // alert(url);
             if(status == true){
 
-                if(url == 'listing'){
+                if(url == 'create'){
+                    $("#addTime").show();
                     $(this).parent().siblings().children().find('#addtime').click();
                     $(this).parent().siblings().find('.unavailable-from-to').hide();
                 }
@@ -239,7 +259,7 @@ $(document).ready(function () {
             }
             else{
 
-                if(url == 'listing'){
+                if(url == 'create'){
                     $(this).parent().siblings().children().find('#removeTime').click();
                     $(this).parent().siblings().find('.unavailable-from-to').show();
                 }

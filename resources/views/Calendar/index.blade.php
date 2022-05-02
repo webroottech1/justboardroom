@@ -176,10 +176,9 @@
                 </span>
                 <div id="syncOption" class="row col-12">
                     @if(empty( Session::get('gcToken') )  && empty( Session::get('msToken') ))
-
                      {{-- <a href="{{ URL::route('oauth') }}"  class="btn syncGCalendar mt-2 google-icon col-10" id="connect-gog-button"> Connect your Google</a> 
                      <a href="{{ URL::route('outlook.login') }}"  class="btn syncGCalendar mt-2 outlook-icon col-10"> Connect your Outlook</a>  --}}
-     @else
+                    @else
                         @if(!empty( Session::get('gcToken') ) )
                           <a href="#"  class="btn resync google-icon mt-2 col-6" id="btn-re-sync-google"> Re-sync</a> 
                         @elseif(!empty( Session::get('msToken') ) )
@@ -352,7 +351,11 @@
                                         <input type="hidden" value="" class="listing-id"/>
                                         <input type="hidden" value="" class="guest-id"/>
                                         {{-- <span class="message-guest">Message Guest</span> --}}
-                                        <button type="button" class="message-guest hosting-add-field">Message Guest</button>
+                                       <input type="text" value="" class="user-id" name="msg" id="msg"   />
+                                      
+                                        <br>
+                                        <button type="button" value="" class="message-guest msgGuest hosting-add-field">Message Guest</button>
+                                        <button type="button" class="message-guest Inbox hosting-add-field">Go To Inbox</button>
                                     </div>
                                     <div class="mx-0 px-0 btn-req-approve">
                                         <input type="hidden" value="" class="payment-id"/>

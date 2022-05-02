@@ -17,3 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+
+
+Route::get('/home', [App\Http\Controllers\Api\ListingController::class, 'index'])->name('homepage');
+Route::post('/getlisting', [App\Http\Controllers\Api\ListingController::class, 'getlisting'])->name('getlisting');
+Route::get('/listing-details/{id}', [App\Http\Controllers\Api\ListingController::class, 'get_listing_details'])->name('listing_details');
+

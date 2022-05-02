@@ -54,7 +54,7 @@
                                         <span class="mx-3 me-1">$</span>
                                         <input class="input-bb-gray price" type="number" id="hourly-price-input" min="1"
                                             max="9999" maxlength="4" name="hourly-price-input"
-                                            value="{{ isset($listing) ? $listing->per_hour_rate : '' }}"
+                                            value="{{ isset($listing) ? isset($listing->per_hour_rate)  : '' }}"
                                             placeholder="________">
                                         <div class="hours-select-text px-2">
                                             <span> / Hour </span>
@@ -64,10 +64,10 @@
                                                 class="form-control form-select rate-currency select-bb-gray">
                                                 <option value="">Select Currency</option>
                                                 <option
-                                                    {{ isset($listing) && $listing->currency == 'CAD' ? 'selected' : '' }}
+                                                    {{ isset($listing) && isset($listing->currency)  &&  $listing->currency == 'CAD' ? 'selected' : '' }}
                                                     value="CAD">CAD</option>
                                                 <option
-                                                    {{ isset($listing) && $listing->currency == 'USD' ? 'selected' : '' }}
+                                                    {{ isset($listing) && isset($listing->currency) && $listing->currency == 'USD' ? 'selected' : '' }}
                                                     value="USD">USD</option>
                                             </select>
                                         </div>
@@ -84,7 +84,7 @@
                                             <option value="0">Select</option>
                                             @for ($i = 1; $i <= 23; $i++)
                                                 <option
-                                                    {{ isset($listing) && $listing->min_hour == $i ? 'selected' : '' }}
+                                                    {{ isset($listing) && isset($listing->min_hour)   && $listing->min_hour == $i ? 'selected' : '' }}
                                                     value={{ $i }}>{{ $i }}</option>
                                             @endfor
                                         </select>
@@ -198,6 +198,8 @@
                                             @endphp
                                             @if (isset($day_to[$day_val]) && $day_to[$day_val][0] == 0)
                                                 @php
+
+                                                   
                                                     $dayunavailableclass = 'showboardroomday';
                                                     $dayavailableclass = 'hideboardroomday';
                                                     $display = 'none';
@@ -321,3 +323,5 @@
         </section>
     </div>
 </div>
+
+
