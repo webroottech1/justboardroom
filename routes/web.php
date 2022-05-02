@@ -83,6 +83,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/initiateMsgToGuest',[InboxController::class, 'initiateMsgToGuest']);
 
     Route::get('/listing/{id}/booking/details',[ListingCalendarController::class, 'getBookingDetails']);
+<<<<<<< HEAD
     Route::post('/initiateMsgToGuest',[InboxController::class, 'initiateMsgToGuest']);
     Route::get('/inbox', [InboxController::class, 'index'])->name('inbox.index');
     Route::post('/getMessage',[InboxController::class, 'getAllMessages']);
@@ -97,6 +98,8 @@ Route::middleware('auth')->group(function () {
 
 
 
+=======
+>>>>>>> c8635552b0400b11d13a957ad95e67783e71b80f
 
 
 
